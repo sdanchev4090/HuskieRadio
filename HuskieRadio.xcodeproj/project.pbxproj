@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B91DEA329102AF500759230 /* player.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5B91DEA229102AF500759230 /* player.jpeg */; };
+		5B91DEA529102B1200759230 /* recents.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5B91DEA429102B1100759230 /* recents.jpeg */; };
 		F621AA3B290C75AA0073D6E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621AA3A290C75AA0073D6E7 /* AppDelegate.swift */; };
 		F621AA3D290C75AA0073D6E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621AA3C290C75AA0073D6E7 /* SceneDelegate.swift */; };
 		F621AA3F290C75AA0073D6E7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621AA3E290C75AA0073D6E7 /* ViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B91DEA229102AF500759230 /* player.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = player.jpeg; sourceTree = "<group>"; };
+		5B91DEA429102B1100759230 /* recents.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = recents.jpeg; sourceTree = "<group>"; };
 		F621AA37290C75AA0073D6E7 /* HuskieRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HuskieRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F621AA3A290C75AA0073D6E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F621AA3C290C75AA0073D6E7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 				F621AA43290C75AB0073D6E7 /* Assets.xcassets */,
 				F621AA45290C75AB0073D6E7 /* LaunchScreen.storyboard */,
 				F621AA48290C75AB0073D6E7 /* Info.plist */,
+				5B91DEA229102AF500759230 /* player.jpeg */,
+				5B91DEA429102B1100759230 /* recents.jpeg */,
 			);
 			path = HuskieRadio;
 			sourceTree = "<group>";
@@ -125,9 +131,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B91DEA529102B1200759230 /* recents.jpeg in Resources */,
 				F621AA47290C75AB0073D6E7 /* LaunchScreen.storyboard in Resources */,
 				F621AA44290C75AB0073D6E7 /* Assets.xcassets in Resources */,
 				F621AA42290C75AA0073D6E7 /* Main.storyboard in Resources */,
+				5B91DEA329102AF500759230 /* player.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
