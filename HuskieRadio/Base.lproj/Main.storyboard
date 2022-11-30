@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QRm-bo-GtJ">
     <device id="ipad10_2" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -16,14 +16,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="player.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="zVz-iW-2Ux">
-                                <rect key="frame" x="0.0" y="70" width="810" height="1010"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D1D-zH-Pey">
-                                <rect key="frame" x="54" y="920" width="135" height="140"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="275" y="911" width="260" height="111"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain"/>
+                                <buttonConfiguration key="configuration" style="plain" image="gobackward" catalog="system" title=" Recents">
+                                    <backgroundConfiguration key="background" cornerRadius="25">
+                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <segue destination="Ww0-kp-gz4" kind="show" id="lhM-Z5-xHx"/>
                                 </connections>
@@ -31,12 +33,6 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="zVz-iW-2Ux" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="79F-7E-f2A"/>
-                            <constraint firstItem="zVz-iW-2Ux" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="PwB-1y-NhE"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zVz-iW-2Ux" secondAttribute="bottom" id="bjc-SJ-yTc"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zVz-iW-2Ux" secondAttribute="trailing" id="rzp-li-Q6Y"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Qi0-ec-vaT"/>
                 </viewController>
@@ -51,23 +47,8 @@
                     <view key="view" contentMode="scaleToFill" id="p9H-ct-uI9">
                         <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recents.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="v3k-zu-bxn">
-                                <rect key="frame" x="0.0" y="70" width="810" height="1010"/>
-                            </imageView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="5VY-Dj-rA2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="v3k-zu-bxn" firstAttribute="leading" secondItem="5VY-Dj-rA2" secondAttribute="leading" id="1Ne-Er-b8D"/>
-                            <constraint firstItem="5VY-Dj-rA2" firstAttribute="trailing" secondItem="v3k-zu-bxn" secondAttribute="trailing" id="3Sx-wJ-Wi8"/>
-                            <constraint firstItem="v3k-zu-bxn" firstAttribute="leading" secondItem="5VY-Dj-rA2" secondAttribute="leading" id="NJW-Jx-kTD"/>
-                            <constraint firstItem="v3k-zu-bxn" firstAttribute="trailing" secondItem="5VY-Dj-rA2" secondAttribute="trailing" id="OAg-xS-ew8"/>
-                            <constraint firstItem="v3k-zu-bxn" firstAttribute="top" secondItem="5VY-Dj-rA2" secondAttribute="top" id="P6n-kE-bFt"/>
-                            <constraint firstItem="v3k-zu-bxn" firstAttribute="top" secondItem="5VY-Dj-rA2" secondAttribute="top" id="Sng-Jx-U0z"/>
-                            <constraint firstItem="5VY-Dj-rA2" firstAttribute="bottom" secondItem="v3k-zu-bxn" secondAttribute="bottom" id="Xec-OG-WT9"/>
-                            <constraint firstItem="v3k-zu-bxn" firstAttribute="bottom" secondItem="5VY-Dj-rA2" secondAttribute="bottom" id="byu-86-Pby"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tRI-Er-M9b"/>
                 </viewController>
@@ -75,10 +56,10 @@
             </objects>
             <point key="canvasLocation" x="2429.6296296296296" y="-28.333333333333332"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Huskie Radio-->
         <scene sceneID="Pop-CX-Ofv">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QRm-bo-GtJ" sceneMemberID="viewController">
+                <navigationController title="Huskie Radio" automaticallyAdjustsScrollViewInsets="NO" id="QRm-bo-GtJ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TJb-HR-d58">
                         <rect key="frame" x="0.0" y="20" width="810" height="50"/>
@@ -95,8 +76,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="player.jpeg" width="1539" height="2047"/>
-        <image name="recents.jpeg" width="1537" height="2043"/>
+        <image name="gobackward" catalog="system" width="119" height="128"/>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
