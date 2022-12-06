@@ -28,6 +28,9 @@
                                     </backgroundConfiguration>
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="volumePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jWx-N6-ZZ8"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCS-ng-Xe2">
                                 <rect key="frame" x="59" y="907" width="125" height="125"/>
@@ -57,16 +60,21 @@
                                     <imageReference key="image" image="play.fill" catalog="system" variableValue="1"/>
                                     <backgroundConfiguration key="background" cornerRadius="100">
                                         <color key="backgroundColor" systemColor="systemBlueColor"/>
-                                        <color key="strokeColor" systemColor="labelColor"/>
                                     </backgroundConfiguration>
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="80"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="playPausePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5lV-jE-8hM"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="Qi0-ec-vaT"/>
+                    <connections>
+                        <outlet property="playPauseButton" destination="y6O-8q-ooG" id="eFn-1L-vYu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -112,9 +120,6 @@
         <image name="person" catalog="system" width="128" height="121"/>
         <image name="play.fill" catalog="system" width="117" height="128"/>
         <image name="volume.3.fill" catalog="system" width="128" height="84"/>
-        <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
