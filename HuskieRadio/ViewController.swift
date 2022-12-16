@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var playPauseButton: UIButton!
+    var songArray : [song] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
