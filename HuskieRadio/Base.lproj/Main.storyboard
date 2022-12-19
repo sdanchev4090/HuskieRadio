@@ -80,10 +80,10 @@
             </objects>
             <point key="canvasLocation" x="1644.4444444444443" y="-28.333333333333332"/>
         </scene>
-        <!--View Controller-->
+        <!--Song History View Controller-->
         <scene sceneID="fky-rJ-0r4">
             <objects>
-                <viewController id="Ww0-kp-gz4" sceneMemberID="viewController">
+                <viewController id="Ww0-kp-gz4" customClass="SongHistoryViewController" customModule="HuskieRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p9H-ct-uI9">
                         <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
