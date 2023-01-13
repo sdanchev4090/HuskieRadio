@@ -18,6 +18,9 @@ class ViewController: UIViewController {
         
     }
 
+    @IBAction func historyPressed(_ sender: Any) {
+        let  nvc  = SongHistoryViewController(nibName: "SongHistoryViewController", bundle: nil)
+    }
     @IBAction func playPausePressed(_ sender: Any) {
     }
     
