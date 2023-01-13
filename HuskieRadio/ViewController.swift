@@ -10,13 +10,14 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var playPauseButton: UIButton!
-    var songArray : [song] = []
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
 
+    @IBAction func historyPressed(_ sender: Any) {
+        let  nvc  = SongHistoryViewController(nibName: "SongHistoryViewController", bundle: nil)
+    }
     @IBAction func playPausePressed(_ sender: Any) {
     }
     

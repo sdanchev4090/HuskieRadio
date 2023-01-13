@@ -8,7 +8,7 @@
 import UIKit
 
 class SongHistoryViewController: UIViewController , UITableViewDataSource, UITableViewDelegate {
-    
+    var songs : [song] = [song(songName: "Placeholder", artist: "placeholder artist", genre: "placeholder", album: "placeholderalbum", songPic: nil)]
 
     @IBOutlet weak var songsTable: UITableView!
     
@@ -19,11 +19,16 @@ class SongHistoryViewController: UIViewController , UITableViewDataSource, UITab
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return songs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = songsTable.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+        var content = cell.defaultContentConfiguration()
+        content.text = songs[indexPath.row].songName
+        content.secondaryText =  songs[indexPath.row].artist
+        cell.contentConfiguration = content
+        return cell
     }
 
 }

@@ -50,7 +50,8 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="Ww0-kp-gz4" kind="presentation" modalPresentationStyle="pageSheet" id="aYt-Qe-BZT"/>
+                                    <action selector="historyPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="quM-Oc-cd5"/>
+                                    <segue destination="Ww0-kp-gz4" kind="presentation" identifier="mySegue" modalPresentationStyle="pageSheet" id="aYt-Qe-BZT"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="L1F-Uu-qvG">
