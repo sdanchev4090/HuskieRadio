@@ -137,6 +137,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tRI-Er-M9b"/>
+                    <connections>
+                        <outlet property="songsTable" destination="fiK-hp-Y27" id="uZE-cU-ZNu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gPm-Ne-2S0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
