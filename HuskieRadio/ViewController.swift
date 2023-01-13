@@ -10,7 +10,8 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var playPauseButton: UIButton!
-    var songArray : [song] = []
+    let urlHQ = "https://cast3.asurahosting.com/proxy/johnhers/stream"
+    let urlLQ = "https://cast3.asurahosting.com/proxy/johnhers/stream2"
     
     override func viewDidLoad() {
         super.viewDidLoad()
