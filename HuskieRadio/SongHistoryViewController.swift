@@ -16,6 +16,12 @@ class SongHistoryViewController: UIViewController , UITableViewDataSource, UITab
         super.viewDidLoad()
         songsTable.dataSource = self
         songsTable.delegate = self
+        //limits array to 10 items
+        if songs.count > 10 {
+            while songs.count > 10 {
+                songs.remove(at: 0)
+            }
+        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
