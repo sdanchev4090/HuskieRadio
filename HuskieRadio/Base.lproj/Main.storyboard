@@ -54,13 +54,6 @@
                                     <segue destination="Ww0-kp-gz4" kind="presentation" identifier="mySegue" modalPresentationStyle="pageSheet" id="aYt-Qe-BZT"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="L1F-Uu-qvG">
-                                <rect key="frame" x="205" y="145" width="400" height="400"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="400" id="6Oy-R0-Yu8"/>
-                                    <constraint firstAttribute="height" constant="402.5" id="S2Y-3b-IjW"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6O-8q-ooG">
                                 <rect key="frame" x="311" y="660" width="188" height="188"/>
                                 <constraints>
@@ -80,24 +73,38 @@
                                     <action selector="playPausePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5lV-jE-8hM"/>
                                 </connections>
                             </button>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kle-pZ-chH">
+                                <rect key="frame" x="205" y="143" width="400" height="402.5"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="402.5" id="5F3-dH-j1N"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="402.5" id="8I3-Qs-xgl"/>
+                                    <constraint firstAttribute="width" constant="400" id="UPA-z8-iel"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="rm2-6K-Js5"/>
+                                </constraints>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3O8-6W-HTU" secondAttribute="trailing" constant="50" id="1C2-K6-Aw8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="y6O-8q-ooG" secondAttribute="bottom" constant="232" id="IMw-tR-3Xe"/>
-                            <constraint firstItem="y6O-8q-ooG" firstAttribute="top" secondItem="L1F-Uu-qvG" secondAttribute="bottom" constant="114" id="JxP-lB-mJ4"/>
+                            <constraint firstItem="Kle-pZ-chH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="73" id="JzH-lP-NIo"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cCS-ng-Xe2" secondAttribute="bottom" constant="50" id="QpB-JI-nFB"/>
                             <constraint firstItem="y6O-8q-ooG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="311" id="SEk-Tf-Wi4"/>
                             <constraint firstItem="cCS-ng-Xe2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="UVt-A1-f7U"/>
-                            <constraint firstItem="L1F-Uu-qvG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="205" id="VdO-zH-fA9"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="L1F-Uu-qvG" secondAttribute="trailing" constant="205" id="WYB-Gp-mfg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3O8-6W-HTU" secondAttribute="bottom" constant="50" id="kRJ-YR-W6C"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="y6O-8q-ooG" secondAttribute="trailing" constant="311" id="mgG-wj-zMa"/>
+                            <constraint firstItem="Kle-pZ-chH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="205" id="nVJ-li-Ajc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Qi0-ec-vaT"/>
                     <connections>
+                        <outlet property="currentSong" destination="Kle-pZ-chH" id="sil-ye-NZ2"/>
                         <outlet property="playPauseButton" destination="y6O-8q-ooG" id="eFn-1L-vYu"/>
                     </connections>
                 </viewController>
@@ -167,7 +174,6 @@
     </scenes>
     <resources>
         <image name="arrow.counterclockwise" catalog="system" width="113" height="128"/>
-        <image name="person" catalog="system" width="128" height="121"/>
         <image name="play.fill" catalog="system" width="117" height="128"/>
         <image name="speaker.wave.3.fill" catalog="system" width="128" height="84"/>
         <systemColor name="opaqueSeparatorColor">

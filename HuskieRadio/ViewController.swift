@@ -7,6 +7,7 @@
 
 import UIKit
 import AVKit
+import WebKit
 
 class ViewController: UIViewController {
 
@@ -15,6 +16,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var playPauseButton: UIButton!
     var player: AVPlayer?
+    @IBOutlet weak var currentSong: WKWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
