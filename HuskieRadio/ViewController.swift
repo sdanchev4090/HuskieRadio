@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var playPauseButton: UIButton!
     var player: AVPlayer?
     @IBOutlet weak var currentSong: WKWebView!
+    @IBOutlet weak var volumeView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,8 +62,18 @@ class ViewController: UIViewController {
             
         }
     }
+    func animate(){
+        UIView.animate(withDuration: 0.2, delay: 0, animations: {
+            self.volumeView.alpha = 0.0
+        })
+    }
     
     @IBAction func volumePressed(_ sender: Any) {
+        if volumeView.frame == CGRect(x: 635, y: 905, width: 125, height: 125){
+            volumeView.frame = CGRect(x: 635, y: 660, width: 125, height: 370)
+        } else {
+            volumeView.frame = CGRect(x: 635, y: 905, width: 125, height: 125)
+        }
     }
 }
 
