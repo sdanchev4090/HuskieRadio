@@ -25,12 +25,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         setup()
         audioPlayer()
     }
     
+        
     func audioPlayer() {
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
