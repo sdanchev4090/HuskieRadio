@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5B91DEA329102AF500759230 /* player.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5B91DEA229102AF500759230 /* player.jpeg */; };
 		5B91DEA529102B1200759230 /* recents.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 5B91DEA429102B1100759230 /* recents.jpeg */; };
+		765653CB298B29390090A893 /* Huskie Radio Header (Transparent).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 765653CA298B29390090A893 /* Huskie Radio Header (Transparent).jpg */; };
 		8DC4E6F52950F1B200E41823 /* SongHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC4E6F42950F1B200E41823 /* SongHistoryViewController.swift */; };
 		8DF43BD9293FB0FA003787DA /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF43BD8293FB0FA003787DA /* Song.swift */; };
 		F621AA3B290C75AA0073D6E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621AA3A290C75AA0073D6E7 /* AppDelegate.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		5B91DEA229102AF500759230 /* player.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = player.jpeg; sourceTree = "<group>"; };
 		5B91DEA429102B1100759230 /* recents.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = recents.jpeg; sourceTree = "<group>"; };
+		765653CA298B29390090A893 /* Huskie Radio Header (Transparent).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Huskie Radio Header (Transparent).jpg"; sourceTree = "<group>"; };
 		8DC4E6F42950F1B200E41823 /* SongHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongHistoryViewController.swift; sourceTree = "<group>"; };
 		8DF43BD8293FB0FA003787DA /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		F621AA37290C75AA0073D6E7 /* HuskieRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HuskieRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +77,7 @@
 				F621AA48290C75AB0073D6E7 /* Info.plist */,
 				5B91DEA229102AF500759230 /* player.jpeg */,
 				5B91DEA429102B1100759230 /* recents.jpeg */,
+				765653CA298B29390090A893 /* Huskie Radio Header (Transparent).jpg */,
 			);
 			path = HuskieRadio;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			files = (
 				5B91DEA529102B1200759230 /* recents.jpeg in Resources */,
 				F621AA47290C75AB0073D6E7 /* LaunchScreen.storyboard in Resources */,
+				765653CB298B29390090A893 /* Huskie Radio Header (Transparent).jpg in Resources */,
 				F621AA44290C75AB0073D6E7 /* Assets.xcassets in Resources */,
 				F621AA42290C75AA0073D6E7 /* Main.storyboard in Resources */,
 				5B91DEA329102AF500759230 /* player.jpeg in Resources */,

@@ -10,69 +10,105 @@ import AVKit
 import WebKit
 
 class ViewController: UIViewController {
-
+    
     let urlHQ = "https://cast3.asurahosting.com/proxy/johnhers/stream"
     let urlLQ = "https://cast3.asurahosting.com/proxy/johnhers/stream2"
     
-    @IBOutlet weak var playPauseButton: UIButton!
-    var player: AVPlayer?
     @IBOutlet weak var currentSong: WKWebView!
+    var player: AVPlayer?
+    @IBOutlet weak var playPauseButton: UIButton!
+    
+    @IBOutlet weak var volumeButton: UIButton!
     @IBOutlet weak var volumeView: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
+        setup()
         audioPlayer()
     }
-
+    
     func audioPlayer() {
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
             player = AVPlayer(url: URL.init(string: urlHQ)!)
             
-            // Current Song Art
+            // Current Song Art HTML
             
         } catch {
         }
     }
     
-    
-    
-    @IBAction func historyPressed(_ sender: Any) {
-        //allows to reference segue destination
-        let  nvc  = SongHistoryViewController(nibName: "SongHistoryViewController", bundle: nil)
+    func setup() {
+        playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        
+        volumeView.layer.cornerRadius = 15
+        volumeView.clipsToBounds = true
     }
-    @IBAction func playPausePressed(_ sender: Any) {
+    
+    
+    
+    @IBAction func historyPressed(_ sender: UIButton) {
+        // Allows to reference segue destination
+//        let nvc = SongHistoryViewController(nibName: "SongHistoryViewController", bundle: nil)
+    }
+    
+    @IBAction func playPausePressed(_ sender: UIButton) {
         if player?.timeControlStatus == .playing {
             // Pause
             player?.pause()
-            // Pause Icon
-            playPauseButton.setBackgroundImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+            // Play Icon
+            playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
             
             // Shrink Image
-            
+            UIView.animate(withDuration: 0.2, delay: 0, animations: {
+                self.currentSong.frame = CGRect(x: 90,
+                                                y: 90,
+                                                width: self.view.frame.size.width-180,     // x times 2
+                                                height: self.view.frame.size.width-180)     // x times 2
+            })
             
         } else {
             // Play
             player?.play()
-            // Play Icon
-            playPauseButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
+            // Pause Icon
+            playPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
             
             // Enlarge Image
-            
+            UIView.animate(withDuration: 0.2, delay: 0, animations: {
+                self.currentSong.frame = CGRect(x: 30,
+                                                y: 30,
+                                                width: self.view.frame.size.width-60,     // x times 2
+                                                height: self.view.frame.size.width-60)     // x times 2
+            })
         }
-    }
-    func animate(){
-        UIView.animate(withDuration: 0.2, delay: 0, animations: {
-            self.volumeView.alpha = 0.0
-        })
     }
     
     @IBAction func volumePressed(_ sender: Any) {
-        if volumeView.frame == CGRect(x: 635, y: 905, width: 125, height: 125){
-            volumeView.frame = CGRect(x: 635, y: 660, width: 125, height: 370)
+        // Volume Pop-up
+        var inset : CGFloat = 10
+        let volStFrame = CGRect(x: volumeButton.frame.minX + inset,
+                                y: volumeButton.frame.minY+8,
+                                width: volumeButton.frame.width-(inset*2),
+                                height: volumeButton.frame.width-(inset*2))
+        let volOpenFrame = CGRect(x: volStFrame.minX,
+                                  y: volStFrame.minY-(playPauseButton.frame.height+(85*2)),
+                                  width: volStFrame.width,
+                                  height: playPauseButton.frame.height+(90*2))
+        
+        // UIView expands + reveals volume slider
+        if volumeView.frame == volStFrame {
+            UIView.animate(withDuration: 0.3, delay: 0) {
+                self.volumeView.frame = volOpenFrame
+            }
+            
         } else {
-            volumeView.frame = CGRect(x: 635, y: 905, width: 125, height: 125)
+            UIView.animate(withDuration: 0.3, delay: 0) {
+                self.volumeView.frame = volStFrame
+            }
         }
     }
 }

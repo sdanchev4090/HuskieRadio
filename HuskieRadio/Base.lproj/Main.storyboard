@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0RR-hQ-Ibf">
-                                <rect key="frame" x="635" y="905" width="125" height="125"/>
+                                <rect key="frame" x="645" y="913" width="105" height="105"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <color key="tintColor" systemColor="systemGray4Color"/>
@@ -60,8 +60,20 @@
                                     <segue destination="Ww0-kp-gz4" kind="presentation" identifier="mySegue" modalPresentationStyle="pageSheet" id="aYt-Qe-BZT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6O-8q-ooG">
-                                <rect key="frame" x="311" y="660" width="188" height="188"/>
+                            <wkWebView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kle-pZ-chH">
+                                <rect key="frame" x="205" y="120" width="400" height="400"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="5F3-dH-j1N"/>
+                                    <constraint firstAttribute="width" constant="400" id="UPA-z8-iel"/>
+                                </constraints>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6O-8q-ooG">
+                                <rect key="frame" x="311" y="690" width="188" height="188"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="188" id="L0U-tE-lvU"/>
                                     <constraint firstAttribute="width" constant="188" id="kz9-Vl-LSU"/>
@@ -79,39 +91,23 @@
                                     <action selector="playPausePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5lV-jE-8hM"/>
                                 </connections>
                             </button>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kle-pZ-chH">
-                                <rect key="frame" x="205" y="143" width="400" height="402.5"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="402.5" id="5F3-dH-j1N"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="402.5" id="8I3-Qs-xgl"/>
-                                    <constraint firstAttribute="width" constant="400" id="UPA-z8-iel"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="400" id="rm2-6K-Js5"/>
-                                </constraints>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3O8-6W-HTU" secondAttribute="trailing" constant="50" id="1C2-K6-Aw8"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="y6O-8q-ooG" secondAttribute="bottom" constant="232" id="IMw-tR-3Xe"/>
-                            <constraint firstItem="Kle-pZ-chH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="73" id="JzH-lP-NIo"/>
+                            <constraint firstItem="Kle-pZ-chH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3F1-De-UJ7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cCS-ng-Xe2" secondAttribute="bottom" constant="50" id="QpB-JI-nFB"/>
-                            <constraint firstItem="y6O-8q-ooG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="311" id="SEk-Tf-Wi4"/>
                             <constraint firstItem="cCS-ng-Xe2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="UVt-A1-f7U"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3O8-6W-HTU" secondAttribute="bottom" constant="50" id="kRJ-YR-W6C"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="y6O-8q-ooG" secondAttribute="trailing" constant="311" id="mgG-wj-zMa"/>
-                            <constraint firstItem="Kle-pZ-chH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="205" id="nVJ-li-Ajc"/>
+                            <constraint firstAttribute="centerX" secondItem="y6O-8q-ooG" secondAttribute="centerX" id="yfE-bm-ddG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Qi0-ec-vaT"/>
                     <connections>
                         <outlet property="currentSong" destination="Kle-pZ-chH" id="sil-ye-NZ2"/>
                         <outlet property="playPauseButton" destination="y6O-8q-ooG" id="eFn-1L-vYu"/>
+                        <outlet property="volumeButton" destination="3O8-6W-HTU" id="RXd-id-sUT"/>
                         <outlet property="volumeView" destination="0RR-hQ-Ibf" id="pGS-uM-0IS"/>
                     </connections>
                 </viewController>
