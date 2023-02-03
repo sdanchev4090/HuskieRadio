@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var volumeButton: UIButton!
     @IBOutlet weak var volumeView: UIView!
+    @IBOutlet weak var volumeSlider: UISlider!
     
     
     override func viewDidLoad() {
@@ -46,6 +47,9 @@ class ViewController: UIViewController {
         
         volumeView.layer.cornerRadius = 15
         volumeView.clipsToBounds = true
+        
+//        volumeSlider.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi/2))
+//        volumeSlider.tintColor = .blue
     }
     
     
@@ -88,7 +92,7 @@ class ViewController: UIViewController {
     
     @IBAction func volumePressed(_ sender: Any) {
         // Volume Pop-up
-        var inset : CGFloat = 10
+        let inset : CGFloat = 10
         let volStFrame = CGRect(x: volumeButton.frame.minX + inset,
                                 y: volumeButton.frame.minY+8,
                                 width: volumeButton.frame.width-(inset*2),
