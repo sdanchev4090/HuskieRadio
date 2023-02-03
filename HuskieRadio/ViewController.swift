@@ -36,6 +36,8 @@ class ViewController: UIViewController {
             player = AVPlayer(url: URL.init(string: urlHQ)!)
             
             // Current Song Art HTML
+            let html = "<!-- RCAST.NET - START EMBEDDED PLAYER --> <iframe width=\"500\" height=\"500\" src=\"https://players.rcast.net/artistimageonly/68840\" frameborder=\"0\" scrolling= \"no\" allow=\"autoplay\"></iframe> <div style=\"overflow:hidden; height:0px; width:0px;\"><a href=\"https://www.rcast.net\" title=\"Internet Radio Hosting\">RCAST.NET</a></div> <!-- RCAST.NET - END EMBEDDED PLAYER -->"
+            currentSong.loadHTMLString(html, baseURL: nil)
             
         } catch {
         }
