@@ -25,9 +25,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setup()
         audioPlayer()
+        player?.play()
+        player?.volume = 0
     }
     
         
@@ -38,7 +39,9 @@ class ViewController: UIViewController {
             
             // Current Song Art HTML
             let html = "<!-- RCAST.NET - START EMBEDDED PLAYER --> <iframe width=\"500\" height=\"500\" src=\"https://players.rcast.net/artistimageonly/68840\" frameborder=\"0\" scrolling= \"no\" allow=\"autoplay\"></iframe> <div style=\"overflow:hidden; height:0px; width:0px;\"><a href=\"https://www.rcast.net\" title=\"Internet Radio Hosting\">RCAST.NET</a></div> <!-- RCAST.NET - END EMBEDDED PLAYER -->"
-            currentSong.loadHTMLString(html, baseURL: nil)
+            DispatchQueue.main.async {
+                  self.currentSong.loadHTMLString(html, baseURL: nil)
+            }
             
         } catch {
         }
@@ -62,9 +65,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func playPausePressed(_ sender: UIButton) {
-        if player?.timeControlStatus == .playing {
+        let html = "<!-- RCAST.NET - START EMBEDDED PLAYER --> <iframe width=\"500\" height=\"500\" src=\"https://players.rcast.net/artistimageonly/68840\" frameborder=\"0\" scrolling= \"no\" allow=\"autoplay\"></iframe> <div style=\"overflow:hidden; height:0px; width:0px;\"><a href=\"https://www.rcast.net\" title=\"Internet Radio Hosting\">RCAST.NET</a></div> <!-- RCAST.NET - END EMBEDDED PLAYER -->"
+        DispatchQueue.main.async {
+              self.currentSong.loadHTMLString(html, baseURL: nil)
+        }
+        if player?.volume != 0 //player?.timeControlStatus == .playing
+        {
             // Pause
-            player?.pause()
+//            player?.pause()
+            player?.volume = 0
             // Play Icon
             playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
             
@@ -78,7 +87,8 @@ class ViewController: UIViewController {
             
         } else {
             // Play
-            player?.play()
+//            player?.play()
+            player?.volume = 0.75
             // Pause Icon
             playPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
             
