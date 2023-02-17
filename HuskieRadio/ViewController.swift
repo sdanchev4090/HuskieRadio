@@ -19,7 +19,6 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var volumeButton: UIButton!
     @IBOutlet weak var volumeView: UIView!
-    @IBOutlet weak var volumeSlider: UISlider!
     
     //---------------------------------------------//
     
@@ -27,13 +26,15 @@ class ViewController: UIViewController {
     var playPause: UIButton!
     var volButton: UIButton!
     var volView: UIButton!
-    var volSlider: UISlider!
-    
+    var volSlider = UISlider(frame: CGRect(x: 697.5, y: 738, width: 300, height: 20))
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         audioPlayer()
         setup()
+        player?.play()
+        player?.volume = 0
     }
     
         
@@ -64,6 +65,12 @@ class ViewController: UIViewController {
         volumeView.layer.cornerRadius = 15
         volumeView.clipsToBounds = true
         
+        // Volume
+        volSlider.center = CGPoint(x: 697.5 , y: 738)
+        var rotate : CGAffineTransform = CGAffineTransformIdentity
+        volSlider.transform = CGAffineTransformRotate(rotate, .pi*3/2)
+        volSlider.tintColor = .blue
+        view.addSubview(volSlider)
         
     }
     
