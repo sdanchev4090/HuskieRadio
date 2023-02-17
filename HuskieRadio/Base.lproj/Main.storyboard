@@ -60,18 +60,6 @@
                                     <segue destination="Ww0-kp-gz4" kind="presentation" identifier="mySegue" modalPresentationStyle="pageSheet" id="aYt-Qe-BZT"/>
                                 </connections>
                             </button>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kle-pZ-chH">
-                                <rect key="frame" x="205" y="120" width="400" height="400"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="5F3-dH-j1N"/>
-                                    <constraint firstAttribute="width" constant="400" id="UPA-z8-iel"/>
-                                </constraints>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6O-8q-ooG">
                                 <rect key="frame" x="311" y="690" width="188" height="188"/>
                                 <constraints>
@@ -96,18 +84,15 @@
                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3O8-6W-HTU" secondAttribute="trailing" constant="50" id="1C2-K6-Aw8"/>
-                            <constraint firstItem="Kle-pZ-chH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3F1-De-UJ7"/>
-                            <constraint firstItem="Kle-pZ-chH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="K55-XF-4Ms"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cCS-ng-Xe2" secondAttribute="bottom" constant="50" id="QpB-JI-nFB"/>
                             <constraint firstItem="cCS-ng-Xe2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="UVt-A1-f7U"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="y6O-8q-ooG" secondAttribute="bottom" constant="202" id="cly-sp-Od9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3O8-6W-HTU" secondAttribute="bottom" constant="50" id="kRJ-YR-W6C"/>
-                            <constraint firstItem="y6O-8q-ooG" firstAttribute="top" secondItem="Kle-pZ-chH" secondAttribute="bottom" constant="170" id="pRo-Ni-kdd"/>
                             <constraint firstAttribute="centerX" secondItem="y6O-8q-ooG" secondAttribute="centerX" id="yfE-bm-ddG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Qi0-ec-vaT"/>
                     <connections>
-                        <outlet property="currentSong" destination="Kle-pZ-chH" id="sil-ye-NZ2"/>
                         <outlet property="playPauseButton" destination="y6O-8q-ooG" id="eFn-1L-vYu"/>
                         <outlet property="volumeButton" destination="3O8-6W-HTU" id="RXd-id-sUT"/>
                         <outlet property="volumeView" destination="0RR-hQ-Ibf" id="pGS-uM-0IS"/>

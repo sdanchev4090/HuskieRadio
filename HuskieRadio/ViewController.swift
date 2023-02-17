@@ -14,7 +14,6 @@ class ViewController: UIViewController {
     let urlHQ = "https://cast3.asurahosting.com/proxy/johnhers/stream"
     let urlLQ = "https://cast3.asurahosting.com/proxy/johnhers/stream2"
     
-    @IBOutlet weak var currentSong: WKWebView!
     var player: AVPlayer?
     @IBOutlet weak var playPauseButton: UIButton!
     
@@ -22,13 +21,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var volumeView: UIView!
     @IBOutlet weak var volumeSlider: UISlider!
     
+    //---------------------------------------------//
+    
+    var songArtWebView: WKWebView!
+    var playPause: UIButton!
+    var volButton: UIButton!
+    var volView: UIButton!
+    var volSlider: UISlider!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+        
         audioPlayer()
-        player?.play()
-        player?.volume = 0
+        setup()
     }
     
         
@@ -40,65 +45,70 @@ class ViewController: UIViewController {
             // Current Song Art HTML
             let html = "<!-- RCAST.NET - START EMBEDDED PLAYER --> <iframe width=\"500\" height=\"500\" src=\"https://players.rcast.net/artistimageonly/68840\" frameborder=\"0\" scrolling= \"no\" allow=\"autoplay\"></iframe> <div style=\"overflow:hidden; height:0px; width:0px;\"><a href=\"https://www.rcast.net\" title=\"Internet Radio Hosting\">RCAST.NET</a></div> <!-- RCAST.NET - END EMBEDDED PLAYER -->"
             DispatchQueue.main.async {
-                  self.currentSong.loadHTMLString(html, baseURL: nil)
+                  self.songArtWebView.loadHTMLString(html, baseURL: nil)
             }
             
         } catch {
+            print("Error Occurred")
         }
     }
     
     func setup() {
         playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
         
+        //Song Art
+        songArtWebView = WKWebView(frame: CGRect(x: 205, y: 120, width: 400, height: 400))
+        view.addSubview(songArtWebView)
+        
+        //Volume
         volumeView.layer.cornerRadius = 15
         volumeView.clipsToBounds = true
         
-//        volumeSlider.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi/2))
-//        volumeSlider.tintColor = .blue
+        
     }
     
     
-    
-    @IBAction func historyPressed(_ sender: UIButton) {
-        // Allows to reference segue destination
-//        let nvc = SongHistoryViewController(nibName: "SongHistoryViewController", bundle: nil)
-    }
     
     @IBAction func playPausePressed(_ sender: UIButton) {
         let html = "<!-- RCAST.NET - START EMBEDDED PLAYER --> <iframe width=\"500\" height=\"500\" src=\"https://players.rcast.net/artistimageonly/68840\" frameborder=\"0\" scrolling= \"no\" allow=\"autoplay\"></iframe> <div style=\"overflow:hidden; height:0px; width:0px;\"><a href=\"https://www.rcast.net\" title=\"Internet Radio Hosting\">RCAST.NET</a></div> <!-- RCAST.NET - END EMBEDDED PLAYER -->"
         DispatchQueue.main.async {
-              self.currentSong.loadHTMLString(html, baseURL: nil)
+              self.songArtWebView.loadHTMLString(html, baseURL: nil)
         }
-        if player?.volume != 0 //player?.timeControlStatus == .playing
-        {
-            // Pause
-//            player?.pause()
+        
+        if player?.volume != 0 {
+            // "Pause"
             player?.volume = 0
             // Play Icon
             playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
             
             // Shrink Image
-            UIView.animate(withDuration: 0.2, delay: 0, animations: {
-                self.currentSong.frame = CGRect(x: 90,
-                                                y: 90,
-                                                width: self.view.frame.size.width-180,     // x times 2
-                                                height: self.view.frame.size.width-180)     // x times 2
-            })
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.2, delay: 0, animations: {
+                    self.songArtWebView.frame = CGRect(x: 205, y: 120, width: 400, height: 400)
+    //                                                CGRect(x: 90,
+    //                                                y: 90,
+    //                                                width: self.view.frame.size.width-180,     // x times 2
+    //                                                height: self.view.frame.size.width-180)     // x times 2
+                })
+            }
             
         } else {
-            // Play
-//            player?.play()
-            player?.volume = 0.75
+            // "Play"
+            player?.volume = 0.5
             // Pause Icon
             playPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
             
             // Enlarge Image
-            UIView.animate(withDuration: 0.2, delay: 0, animations: {
-                self.currentSong.frame = CGRect(x: 30,
-                                                y: 30,
-                                                width: self.view.frame.size.width-60,     // x times 2
-                                                height: self.view.frame.size.width-60)     // x times 2
-            })
+            
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.2, delay: 0, animations: {
+                    self.songArtWebView.frame = CGRect(x: 155, y: 70, width: 500, height: 500)
+    //                                                CGRect(x: 30,
+    //                                                y: 30,
+    //                                                width: self.view.frame.size.width-60,     // x times 2
+    //                                                height: self.view.frame.size.width-60)     // x times 2
+                })
+            }
         }
     }
     
@@ -125,6 +135,11 @@ class ViewController: UIViewController {
                 self.volumeView.frame = volStFrame
             }
         }
+    }
+    
+    @IBAction func historyPressed(_ sender: UIButton) {
+        // Allows to reference segue destination
+//        let nvc = SongHistoryViewController(nibName: "SongHistoryViewController", bundle: nil)
     }
 }
 
