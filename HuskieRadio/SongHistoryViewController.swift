@@ -6,35 +6,17 @@
 //
 
 import UIKit
-
-class SongHistoryViewController: UIViewController , UITableViewDataSource, UITableViewDelegate {
-    var songs : [song] = [song(songName: "Placeholder", artist: "placeholder artist", genre: "placeholder", album: "placeholderalbum", songPic: nil)]
-
-    @IBOutlet weak var songsTable: UITableView!
+import WebKit
+class SongHistoryViewController: UIViewController {
+    @IBOutlet weak var recentlyPlayed: WKWebView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        songsTable.dataSource = self
-        songsTable.delegate = self
-        //limits array to 10 items
-        if songs.count > 10 {
-            while songs.count > 10 {
-                songs.remove(at: 0)
-            }
+    override func viewWillAppear(_ animated: Bool) {
+        let html = "            <!-- RCAST.NET - START EMBEDDED PLAYER --> <iframe width=\"100%\" height=\"600\" src=\"https://players.rcast.net/playlisthistory4/68840\" frameborder=\"0\" scrolling=\"yes\" allow=\"autoplay\"></iframe> <div style=\"overflow:hidden; height:0px; width:0px;\"><a href=\"https://www.rcast.net\" title=\"Internet Radio Hosting\">RCAST.NET</a></div> <!-- RCAST.NET - END EMBEDDED PLAYER -->"
+        DispatchQueue.main.async {
+            self.recentlyPlayed.loadHTMLString(html, baseURL: nil)
         }
     }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return songs.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = songsTable.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-        var content = cell.defaultContentConfiguration()
-        content.text = songs[indexPath.row].songName
-        content.secondaryText =  songs[indexPath.row].artist
-        cell.contentConfiguration = content
-        return cell
+    override func viewDidLoad() {
     }
 
 }
