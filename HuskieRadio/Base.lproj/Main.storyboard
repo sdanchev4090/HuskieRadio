@@ -107,36 +107,30 @@
             <objects>
                 <viewController id="Ww0-kp-gz4" customClass="SongHistoryViewController" customModule="HuskieRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p9H-ct-uI9">
-                        <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="995"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fiK-hp-Y27">
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uvV-bH-llg">
                                 <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" id="R5e-qr-LvG">
-                                        <rect key="frame" x="0.0" y="50" width="704" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R5e-qr-LvG" id="tDD-7v-028">
-                                            <rect key="frame" x="0.0" y="0.0" width="704" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5VY-Dj-rA2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="fiK-hp-Y27" firstAttribute="leading" secondItem="5VY-Dj-rA2" secondAttribute="leading" id="Bub-q4-Uis"/>
-                            <constraint firstItem="5VY-Dj-rA2" firstAttribute="bottom" secondItem="fiK-hp-Y27" secondAttribute="bottom" id="CWv-x7-MXj"/>
-                            <constraint firstItem="fiK-hp-Y27" firstAttribute="top" secondItem="5VY-Dj-rA2" secondAttribute="top" id="HxD-qC-5gk"/>
-                            <constraint firstItem="5VY-Dj-rA2" firstAttribute="trailing" secondItem="fiK-hp-Y27" secondAttribute="trailing" id="NWC-aC-dQf"/>
+                            <constraint firstItem="uvV-bH-llg" firstAttribute="top" secondItem="5VY-Dj-rA2" secondAttribute="top" id="DY0-3d-dKl"/>
+                            <constraint firstItem="5VY-Dj-rA2" firstAttribute="trailing" secondItem="uvV-bH-llg" secondAttribute="trailing" id="UAl-Gc-epA"/>
+                            <constraint firstItem="5VY-Dj-rA2" firstAttribute="bottom" secondItem="uvV-bH-llg" secondAttribute="bottom" id="Xzf-vy-ifM"/>
+                            <constraint firstItem="uvV-bH-llg" firstAttribute="leading" secondItem="5VY-Dj-rA2" secondAttribute="leading" id="nYA-lf-tjD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tRI-Er-M9b"/>
                     <connections>
-                        <outlet property="songsTable" destination="fiK-hp-Y27" id="uZE-cU-ZNu"/>
+                        <outlet property="recentlyPlayed" destination="uvV-bH-llg" id="JjK-Te-tcg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gPm-Ne-2S0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
