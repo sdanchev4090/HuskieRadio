@@ -43,9 +43,11 @@ class ViewController: UIViewController {
         
         // Volume
         volView = UIView(frame: CGRect(x: 645, y: 913, width: 105, height: 105))
-        volView.backgroundColor = .systemGray5
+        volView.backgroundColor = .blue
         volView.layer.cornerRadius = 15
         volView.clipsToBounds = true
+//        volView.sendSubviewToBack(self.songArtWebView)
+        view.addSubview(volView)
         
         // Test
 //        let myVolSlider = MPVolumeView(frame: volView.bounds)
