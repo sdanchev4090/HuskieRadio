@@ -16,28 +16,51 @@ class ViewController: UIViewController {
     
     var player: AVPlayer?
     @IBOutlet weak var playPauseButton: UIButton!
-    
     @IBOutlet weak var volumeButton: UIButton!
-    @IBOutlet weak var volumeView: UIView!
     
     //---------------------------------------------//
     
     var songArtWebView: WKWebView!
     var playPause: UIButton!
     var volButton: UIButton!
-    var volView: UIButton!
-    var volSlider = UISlider(frame: CGRect(x: 697.5, y: 738, width: 300, height: 20))
+    var volView: UIView!
+    var volSlider: UISlider!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         audioPlayer()
         setup()
-        player?.play()
-        player?.volume = 0
     }
     
         
+    func setup() {
+        playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        
+        // Song Art
+        songArtWebView = WKWebView(frame: CGRect(x: 205, y: 120, width: 400, height: 400))
+        view.addSubview(songArtWebView)
+        
+        // Volume
+        volView = UIView(frame: CGRect(x: 645, y: 913, width: 105, height: 105))
+        volView.backgroundColor = .systemGray5
+        volView.layer.cornerRadius = 15
+        volView.clipsToBounds = true
+        
+        // Test
+//        let myVolSlider = MPVolumeView(frame: volView.bounds)
+//        volView.addSubview(myVolSlider)
+        
+        // Volume Slider
+        volSlider = UISlider(frame: CGRect(x: 697.5, y: 738, width: 300, height: 20))
+        volSlider.center = CGPoint(x: 697.5 , y: 738)
+        let rotate : CGAffineTransform = CGAffineTransformIdentity
+        volSlider.transform = CGAffineTransformRotate(rotate, .pi*3/2)
+        volSlider.tintColor = .blue
+        view.addSubview(volSlider)
+        
+    }
+    
     func audioPlayer() {
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
@@ -48,40 +71,17 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                   self.songArtWebView.loadHTMLString(html, baseURL: nil)
             }
+            player?.play()
+            player?.volume = 0
             
         } catch {
             print("Error Occurred")
         }
     }
     
-    func setup() {
-        playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-        
-        //Song Art
-        songArtWebView = WKWebView(frame: CGRect(x: 205, y: 120, width: 400, height: 400))
-        view.addSubview(songArtWebView)
-        
-        //Volume
-        volumeView.layer.cornerRadius = 15
-        volumeView.clipsToBounds = true
-        
-        // Volume
-        volSlider.center = CGPoint(x: 697.5 , y: 738)
-        var rotate : CGAffineTransform = CGAffineTransformIdentity
-        volSlider.transform = CGAffineTransformRotate(rotate, .pi*3/2)
-        volSlider.tintColor = .blue
-        view.addSubview(volSlider)
-        
-    }
-    
     
     
     @IBAction func playPausePressed(_ sender: UIButton) {
-        let html = "<!-- RCAST.NET - START EMBEDDED PLAYER --> <iframe width=\"500\" height=\"500\" src=\"https://players.rcast.net/artistimageonly/68840\" frameborder=\"0\" scrolling= \"no\" allow=\"autoplay\"></iframe> <div style=\"overflow:hidden; height:0px; width:0px;\"><a href=\"https://www.rcast.net\" title=\"Internet Radio Hosting\">RCAST.NET</a></div> <!-- RCAST.NET - END EMBEDDED PLAYER -->"
-        DispatchQueue.main.async {
-              self.songArtWebView.loadHTMLString(html, baseURL: nil)
-        }
-        
         if player?.volume != 0 {
             // "Pause"
             player?.volume = 0
@@ -91,11 +91,10 @@ class ViewController: UIViewController {
             // Shrink Image
             DispatchQueue.main.async {
                 UIView.animate(withDuration: 0.2, delay: 0, animations: {
-                    self.songArtWebView.frame = CGRect(x: 205, y: 120, width: 400, height: 400)
-    //                                                CGRect(x: 90,
-    //                                                y: 90,
-    //                                                width: self.view.frame.size.width-180,     // x times 2
-    //                                                height: self.view.frame.size.width-180)     // x times 2
+                    self.songArtWebView.frame = CGRect(x: 205,
+                                                       y: 120,
+                                                       width: self.view.frame.size.width-410,     // x times 2
+                                                       height: self.view.frame.size.width-410)     // x times 2
                 })
             }
             
@@ -109,11 +108,10 @@ class ViewController: UIViewController {
             
             DispatchQueue.main.async {
                 UIView.animate(withDuration: 0.2, delay: 0, animations: {
-                    self.songArtWebView.frame = CGRect(x: 155, y: 70, width: 500, height: 500)
-    //                                                CGRect(x: 30,
-    //                                                y: 30,
-    //                                                width: self.view.frame.size.width-60,     // x times 2
-    //                                                height: self.view.frame.size.width-60)     // x times 2
+                    self.songArtWebView.frame = CGRect(x: 155,
+                                                       y: 70,
+                                                       width: self.view.frame.size.width-310,     // x times 2
+                                                       height: self.view.frame.size.width-310)     // x times 2
                 })
             }
         }
@@ -132,14 +130,14 @@ class ViewController: UIViewController {
                                   height: playPauseButton.frame.height+(90*2))
         
         // UIView expands + reveals volume slider
-        if volumeView.frame == volStFrame {
+        if volView.frame == volStFrame {
             UIView.animate(withDuration: 0.3, delay: 0) {
-                self.volumeView.frame = volOpenFrame
+                self.volView.frame = volOpenFrame
             }
             
         } else {
             UIView.animate(withDuration: 0.3, delay: 0) {
-                self.volumeView.frame = volStFrame
+                self.volView.frame = volStFrame
             }
         }
     }
