@@ -34,7 +34,6 @@ class ViewController: UIViewController {
         audioPlayer()
         setup()
         
-        print(AVAudioSession.sharedInstance().outputVolume)
     }
     
         
