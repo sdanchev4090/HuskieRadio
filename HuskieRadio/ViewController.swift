@@ -25,6 +25,8 @@ class ViewController: UIViewController {
     var songNameWebView: WKWebView!
     var playPause: UIButton!
     var volButton: UIButton!
+    var volView: UIView!
+    var volSlider: UISlider!
     
 
     override func viewDidLoad() {
@@ -33,7 +35,6 @@ class ViewController: UIViewController {
         audioPlayer()
         setup()
         
-        print(AVAudioSession.sharedInstance().outputVolume)
     }
     
         
@@ -54,6 +55,19 @@ class ViewController: UIViewController {
         
         
         
+
+        // Volume
+        volView = UIView(frame: CGRect(x: 645, y: 913, width: 105, height: 105))
+        volView.backgroundColor = .blue
+        volView.layer.cornerRadius = 15
+        volView.clipsToBounds = true
+        
+        // Volume Slider
+        volSlider = UISlider(frame: CGRect(x: 697.5, y: 738, width: 300, height: 20))
+        volSlider.center = CGPoint(x: 697.5 , y: 738)
+        let rotate : CGAffineTransform = CGAffineTransformIdentity
+        volSlider.transform = CGAffineTransformRotate(rotate, .pi*3/2)
+        volSlider.tintColor = .systemOrange
     }
     
     func audioPlayer() {
@@ -86,32 +100,11 @@ class ViewController: UIViewController {
             // Play Icon
             playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
             
-            // Shrink Image
-            DispatchQueue.main.async {
-                UIView.animate(withDuration: 0.2, delay: 0, animations: {
-                    self.songArtWebView.frame = CGRect(x: 205,
-                                                       y: 120,
-                                                       width: self.view.frame.size.width-410,     // x times 2
-                                                       height: self.view.frame.size.width-410)     // x times 2
-                })
-            }
-            
         } else {
             // "Play"
             player?.volume = 0.5
             // Pause Icon
             playPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-            
-            // Enlarge Image
-            
-            DispatchQueue.main.async {
-                UIView.animate(withDuration: 0.2, delay: 0, animations: {
-                    self.songArtWebView.frame = CGRect(x: 155,
-                                                       y: 70,
-                                                       width: self.view.frame.size.width-310,     // x times 2
-                                                       height: self.view.frame.size.width-310)     // x times 2
-                })
-            }
         }
     }
     
@@ -128,17 +121,16 @@ class ViewController: UIViewController {
                                   height: playPauseButton.frame.height+(90*2))
         
         // UIView expands + reveals volume slider
-//        if volView.frame == volStFrame {
-//            UIView.animate(withDuration: 0.3, delay: 0) {
-//                self.volView.frame = volOpenFrame
-//            }
-//
-//        } else {
-//            UIView.animate(withDuration: 0.3, delay: 0) {
-//                self.volView.frame = volStFrame
-//            }
-//        }
-        MPVolumeView.setVolume(0.5)
+        if volView.frame == volStFrame {
+            UIView.animate(withDuration: 0.3, delay: 0) {
+                self.volView.frame = volOpenFrame
+            }
+
+        } else {
+            UIView.animate(withDuration: 0.3, delay: 0) {
+                self.volView.frame = volStFrame
+            }
+        }
     }
     
     @IBAction func historyPressed(_ sender: UIButton) {
@@ -147,26 +139,3 @@ class ViewController: UIViewController {
     }
 }
 
-
-extension MPVolumeView {
-    static func setVolume(_ volume: Float) {
-        var volView = MPVolumeView()
-        var volSlider = volView.subviews.first(where: {$0 is UISlider}) as! UISlider
-        // Volume
-        volView = MPVolumeView(frame: CGRect(x: 645, y: 913, width: 105, height: 105))
-        volView.backgroundColor = .blue
-        volView.layer.cornerRadius = 15
-        volView.clipsToBounds = true
-        
-        // Volume Slider
-        volSlider = UISlider(frame: CGRect(x: 697.5, y: 738, width: 300, height: 20))
-        volSlider.center = CGPoint(x: 697.5 , y: 738)
-        let rotate : CGAffineTransform = CGAffineTransformIdentity
-        volSlider.transform = CGAffineTransformRotate(rotate, .pi*3/2)
-        volSlider.tintColor = .systemOrange
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            volSlider.value = volume
-        }
-    }
-}
