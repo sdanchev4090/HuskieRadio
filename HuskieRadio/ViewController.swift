@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     //---------------------------------------------//
     
     var songArtWebView: WKWebView!
+    var songNameWebView: WKWebView!
     var playPause: UIButton!
     var volButton: UIButton!
     
@@ -43,7 +44,9 @@ class ViewController: UIViewController {
         songArtWebView = WKWebView(frame: CGRect(x: 205, y: 120, width: 400, height: 400))
         view.addSubview(songArtWebView)
         
-        
+        // Song Name
+        songNameWebView = WKWebView(frame: CGRect(x: 105, y: 590, width: 500, height: 100))
+        view.addSubview(songNameWebView)
         
         // Test
 //        let myVolSlider = MPVolumeView(frame: volView.bounds)
@@ -60,8 +63,11 @@ class ViewController: UIViewController {
             
             // Current Song Art HTML
             let html = "<!-- RCAST.NET - START EMBEDDED PLAYER --> <iframe width=\"500\" height=\"500\" src=\"https://players.rcast.net/artistimageonly/68840\" frameborder=\"0\" scrolling= \"no\" allow=\"autoplay\"></iframe> <div style=\"overflow:hidden; height:0px; width:0px;\"><a href=\"https://www.rcast.net\" title=\"Internet Radio Hosting\">RCAST.NET</a></div> <!-- RCAST.NET - END EMBEDDED PLAYER -->"
+            let html2 = "<div style=\"bottom: 0;display: flex;height: 64px;left: 100;position: relative;right: 100;width: 100%;z-index: 1500;overflow: hidden;\"><iframe src=\"https://players.rcast.net/fixedbar5/68840\" frameborder=\"0\" scrolling=\"no\" allow=\"autoplay\" style=\"width: 100%;\"></iframe></div> <div style=\"overflow:hidden; height:0px; width:0px;\"><a href=\"https://www.rcast.net\" title=\"Internet Radio Hosting\">RCAST.NET</a></div>"
+            //"<iframe width=\"400\" height=\"125\" src=\"https://players.rcast.net/playerbar/68840\" frameborder=\"0\" scrolling=\"no\" allow=\"autoplay\"></iframe><div style=\"overflow:hidden; height:0px; width:0px;\"><a href=\"https://www.rcast.net\" title=\"Internet Radio Hosting\">RCAST.NET</a></div>"
             DispatchQueue.main.async {
                   self.songArtWebView.loadHTMLString(html, baseURL: nil)
+                self.songNameWebView.loadHTMLString(html2, baseURL: nil)
             }
             player?.play()
             player?.volume = 0
