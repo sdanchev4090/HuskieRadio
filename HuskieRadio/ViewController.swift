@@ -16,14 +16,18 @@ class ViewController: UIViewController {
     let urlLQ = "https://cast3.asurahosting.com/proxy/johnhers/stream2"
     
     var player: AVPlayer?
-    @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var volumeButton: UIButton!
     
     //---------------------------------------------//
     
-    var songArtWebView: WKWebView!
+    private let songArtWebView: WKWebView = {
+        let webView = WKWebView()
+        webView.contentMode = .scaleAspectFill
+        return webView
+    }()
     var songNameWebView: WKWebView!
-    var playPause: UIButton!
+    
+    var playPauseButton: UIButton!
     var volButton: UIButton!
     var volView: UIView!
     var volSlider: UISlider!
@@ -39,10 +43,13 @@ class ViewController: UIViewController {
     
         
     func setup() {
+        // Play/Pause
+        playPauseButton = UIButton(frame: CGRect(x: 311, y: 690, width: 188, height: 188))
         playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        view.addSubview(playPauseButton)
         
         // Song Art
-        songArtWebView = WKWebView(frame: CGRect(x: 205, y: 120, width: 400, height: 400))
+        songArtWebView.frame = CGRect(x: 205, y: 120, width: 400, height: 400)
         view.addSubview(songArtWebView)
         
         // Song Name
@@ -54,8 +61,6 @@ class ViewController: UIViewController {
 //        volView.addSubview(myVolSlider)
         
         
-        
-
         // Volume
         volView = UIView(frame: CGRect(x: 645, y: 913, width: 105, height: 105))
         volView.backgroundColor = .blue
@@ -83,8 +88,8 @@ class ViewController: UIViewController {
                   self.songArtWebView.loadHTMLString(html, baseURL: nil)
                 self.songNameWebView.loadHTMLString(html2, baseURL: nil)
             }
-            player?.play()
             player?.volume = 0
+            player?.play()
             
         } catch {
             print("Error Occurred")
@@ -93,7 +98,7 @@ class ViewController: UIViewController {
     
     
     
-    @IBAction func playPausePressed(_ sender: UIButton) {
+    @objc func playPausePressed(_ sender: UIButton) {
         if player?.volume != 0 {
             // "Pause"
             player?.volume = 0

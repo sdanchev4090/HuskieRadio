@@ -54,25 +54,6 @@
                                     <segue destination="Ww0-kp-gz4" kind="presentation" identifier="mySegue" modalPresentationStyle="pageSheet" id="aYt-Qe-BZT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6O-8q-ooG">
-                                <rect key="frame" x="311" y="690" width="188" height="188"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="188" id="L0U-tE-lvU"/>
-                                    <constraint firstAttribute="width" constant="188" id="kz9-Vl-LSU"/>
-                                </constraints>
-                                <color key="tintColor" systemColor="secondarySystemBackgroundColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <imageReference key="image" image="play.fill" catalog="system" variableValue="1"/>
-                                    <backgroundConfiguration key="background" cornerRadius="100">
-                                        <color key="backgroundColor" systemColor="systemBlueColor"/>
-                                    </backgroundConfiguration>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="80"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="playPausePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5lV-jE-8hM"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
@@ -80,14 +61,11 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3O8-6W-HTU" secondAttribute="trailing" constant="50" id="1C2-K6-Aw8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cCS-ng-Xe2" secondAttribute="bottom" constant="50" id="QpB-JI-nFB"/>
                             <constraint firstItem="cCS-ng-Xe2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="UVt-A1-f7U"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="y6O-8q-ooG" secondAttribute="bottom" constant="202" id="cly-sp-Od9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3O8-6W-HTU" secondAttribute="bottom" constant="50" id="kRJ-YR-W6C"/>
-                            <constraint firstAttribute="centerX" secondItem="y6O-8q-ooG" secondAttribute="centerX" id="yfE-bm-ddG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Qi0-ec-vaT"/>
                     <connections>
-                        <outlet property="playPauseButton" destination="y6O-8q-ooG" id="eFn-1L-vYu"/>
                         <outlet property="volumeButton" destination="3O8-6W-HTU" id="RXd-id-sUT"/>
                     </connections>
                 </viewController>
@@ -100,7 +78,7 @@
             <objects>
                 <viewController id="Ww0-kp-gz4" customClass="SongHistoryViewController" customModule="HuskieRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p9H-ct-uI9">
-                        <rect key="frame" x="0.0" y="0.0" width="704" height="995"/>
+                        <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uvV-bH-llg">
@@ -151,22 +129,15 @@
     </scenes>
     <resources>
         <image name="arrow.counterclockwise" catalog="system" width="113" height="128"/>
-        <image name="play.fill" catalog="system" width="117" height="128"/>
         <image name="speaker.wave.3.fill" catalog="system" width="128" height="84"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
