@@ -25,9 +25,14 @@ class ViewController: UIViewController {
         webView.contentMode = .scaleAspectFill
         return webView
     }()
-    var songNameWebView: WKWebView!
+    private let songNameWebView: WKWebView = {
+        let webView = WKWebView()
+        webView.contentMode = .scaleAspectFill
+        return webView
+    }()
     
     var playPauseButton: UIButton!
+    var recentsButton: UIButton!
     var volButton: UIButton!
     var volView: UIView!
     var volSlider: UISlider!
@@ -43,31 +48,36 @@ class ViewController: UIViewController {
     
         
     func setup() {
-        // Play/Pause
-        playPauseButton = UIButton(frame: CGRect(x: 311, y: 690, width: 188, height: 188))
-        playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-        view.addSubview(playPauseButton)
-        
         // Song Art
         songArtWebView.frame = CGRect(x: 205, y: 120, width: 400, height: 400)
+        songArtWebView.layer.cornerRadius = 25
+        songArtWebView.clipsToBounds = true
         view.addSubview(songArtWebView)
         
         // Song Name
-        songNameWebView = WKWebView(frame: CGRect(x: 105, y: 590, width: 500, height: 100))
+        songNameWebView.frame = CGRect(x: 105, y: 590, width: 500, height: 100)
         view.addSubview(songNameWebView)
         
-        // Test
-//        let myVolSlider = MPVolumeView(frame: volView.bounds)
-//        volView.addSubview(myVolSlider)
+        // Play/Pause
+        playPauseButton = UIButton(frame: CGRect(x: 311, y: 690, width: 188, height: 188))
+        playPauseButton.setBackgroundImage(UIImage(systemName: "play.fill"), for: .normal)
+        view.addSubview(playPauseButton)
         
+        // Recents
+        recentsButton = UIButton(frame: CGRect(x: 50, y: 905, width: 125, height: 125))
+        recentsButton.setBackgroundImage(UIImage(systemName: "music.note.list"), for: .normal)
+        view.addSubview(recentsButton)
         
         // Volume
+        volButton = UIButton(frame: CGRect(x: 635, y: 905, width: 125, height: 125))
+        view.addSubview(volButton)
+        
+        // Volume Slider
         volView = UIView(frame: CGRect(x: 645, y: 913, width: 105, height: 105))
         volView.backgroundColor = .blue
         volView.layer.cornerRadius = 15
         volView.clipsToBounds = true
         
-        // Volume Slider
         volSlider = UISlider(frame: CGRect(x: 697.5, y: 738, width: 300, height: 20))
         volSlider.center = CGPoint(x: 697.5 , y: 738)
         let rotate : CGAffineTransform = CGAffineTransformIdentity
