@@ -15,8 +15,11 @@ class ViewController: UIViewController {
     let urlHQ = "https://cast3.asurahosting.com/proxy/johnhers/stream"
     let urlLQ = "https://cast3.asurahosting.com/proxy/johnhers/stream2"
     
+    let songArt = "https://artwork.rcast.net/68840"
+    let songNameArtist = "https://status.rcast.net/68840"
+    let recentsList = "https://playlist.rcast.net/68840"
+    
     var player: AVPlayer?
-    @IBOutlet weak var volumeButton: UIButton!
     
     //---------------------------------------------//
     
@@ -70,6 +73,7 @@ class ViewController: UIViewController {
         
         // Volume
         volButton = UIButton(frame: CGRect(x: 635, y: 905, width: 125, height: 125))
+        volButton.setBackgroundImage(UIImage(systemName: "volume.2.fill"), for: .normal)
         view.addSubview(volButton)
         
         // Volume Slider
@@ -92,11 +96,9 @@ class ViewController: UIViewController {
             
             // Current Song Art HTML
             let html = "<!-- RCAST.NET - START EMBEDDED PLAYER --> <iframe width=\"500\" height=\"500\" src=\"https://players.rcast.net/artistimageonly/68840\" frameborder=\"0\" scrolling= \"no\" allow=\"autoplay\"></iframe> <div style=\"overflow:hidden; height:0px; width:0px;\"><a href=\"https://www.rcast.net\" title=\"Internet Radio Hosting\">RCAST.NET</a></div> <!-- RCAST.NET - END EMBEDDED PLAYER -->"
-            let html2 = "<div style=\"bottom: 0;display: flex;height: 64px;left: 100;position: relative;right: 100;width: 100%;z-index: 1500;overflow: hidden;\"><iframe src=\"https://players.rcast.net/fixedbar5/68840\" frameborder=\"0\" scrolling=\"no\" allow=\"autoplay\" style=\"width: 100%;\"></iframe></div> <div style=\"overflow:hidden; height:0px; width:0px;\"><a href=\"https://www.rcast.net\" title=\"Internet Radio Hosting\">RCAST.NET</a></div>"
             
             DispatchQueue.main.async {
                   self.songArtWebView.loadHTMLString(html, baseURL: nil)
-                self.songNameWebView.loadHTMLString(html2, baseURL: nil)
             }
             player?.volume = 0
             player?.play()
@@ -108,28 +110,28 @@ class ViewController: UIViewController {
     
     
     
-    @objc func playPausePressed(_ sender: UIButton) {
+    @objc func playPausePressed() {
         if player?.volume != 0 {
             // "Pause"
             player?.volume = 0
             // Play Icon
-            playPauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            playPauseButton.setBackgroundImage(UIImage(systemName: "play.fill"), for: .normal)
             
         } else {
             // "Play"
             player?.volume = 0.5
             // Pause Icon
-            playPauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+            playPauseButton.setBackgroundImage(UIImage(systemName: "pause.fill"), for: .normal)
         }
     }
     
-    @IBAction func volumePressed(_ sender: Any) {
+    @objc func volumePressed() {
         // Volume Pop-up
         let inset : CGFloat = 10
-        let volStFrame = CGRect(x: volumeButton.frame.minX + inset,
-                                y: volumeButton.frame.minY+8,
-                                width: volumeButton.frame.width-(inset*2),
-                                height: volumeButton.frame.width-(inset*2))
+        let volStFrame = CGRect(x: volButton.frame.minX + inset,
+                                y: volButton.frame.minY+8,
+                                width: volButton.frame.width-(inset*2),
+                                height: volButton.frame.width-(inset*2))
         let volOpenFrame = CGRect(x: volStFrame.minX,
                                   y: volStFrame.minY-(playPauseButton.frame.height+(85*2)),
                                   width: volStFrame.width,
@@ -148,7 +150,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func historyPressed(_ sender: UIButton) {
+    @objc func recentsPressed() {
         // Allows to reference segue destination
 //        let nvc = SongHistoryViewController(nibName: "SongHistoryViewController", bundle: nil)
     }
