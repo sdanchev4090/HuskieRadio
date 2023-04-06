@@ -16,33 +16,8 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCS-ng-Xe2">
-                                <rect key="frame" x="50" y="855" width="125" height="125"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="125" id="Dp9-QK-1Eq"/>
-                                    <constraint firstAttribute="width" constant="125" id="STN-e5-R3f"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <imageReference key="image" image="arrow.counterclockwise" catalog="system" variableValue="1"/>
-                                    <backgroundConfiguration key="background" cornerRadius="25">
-                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
-                                    </backgroundConfiguration>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="historyPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="quM-Oc-cd5"/>
-                                    <segue destination="Ww0-kp-gz4" kind="presentation" identifier="mySegue" modalPresentationStyle="pageSheet" id="aYt-Qe-BZT"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cCS-ng-Xe2" secondAttribute="bottom" constant="50" id="QpB-JI-nFB"/>
-                            <constraint firstItem="cCS-ng-Xe2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="UVt-A1-f7U"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Player" id="DPT-1p-5mt">
                         <imageReference key="image" image="radio" catalog="system" symbolScale="medium"/>
@@ -58,31 +33,12 @@
             <objects>
                 <viewController id="Ww0-kp-gz4" customClass="SongHistoryViewController" customModule="HuskieRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p9H-ct-uI9">
-                        <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uvV-bH-llg">
-                                <rect key="frame" x="0.0" y="0.0" width="704" height="995.5"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="5VY-Dj-rA2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="uvV-bH-llg" firstAttribute="top" secondItem="5VY-Dj-rA2" secondAttribute="top" id="DY0-3d-dKl"/>
-                            <constraint firstItem="5VY-Dj-rA2" firstAttribute="trailing" secondItem="uvV-bH-llg" secondAttribute="trailing" id="UAl-Gc-epA"/>
-                            <constraint firstItem="5VY-Dj-rA2" firstAttribute="bottom" secondItem="uvV-bH-llg" secondAttribute="bottom" id="Xzf-vy-ifM"/>
-                            <constraint firstItem="uvV-bH-llg" firstAttribute="leading" secondItem="5VY-Dj-rA2" secondAttribute="leading" id="nYA-lf-tjD"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tRI-Er-M9b"/>
-                    <connections>
-                        <outlet property="recentlyPlayed" destination="uvV-bH-llg" id="JjK-Te-tcg"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gPm-Ne-2S0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -108,11 +64,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.counterclockwise" catalog="system" width="113" height="128"/>
         <image name="radio" catalog="system" width="128" height="115"/>
-        <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

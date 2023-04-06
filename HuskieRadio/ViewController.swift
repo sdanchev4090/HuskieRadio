@@ -15,9 +15,9 @@ class ViewController: UIViewController {
     let urlHQ = "https://cast3.asurahosting.com/proxy/johnhers/stream"
     let urlLQ = "https://cast3.asurahosting.com/proxy/johnhers/stream2"
     
-    let songArt = "https://artwork.rcast.net/68840"
-    let songNameArtist = "https://status.rcast.net/68840"
-    let recentsList = "https://playlist.rcast.net/68840"
+    let urlSongArt = URL(string: "https://artwork.rcast.net/68840")!
+    let urlTitleArtist = URL(string: "https://status.rcast.net/68840")!
+    let urlRecentsList = URL(string: "https://playlist.rcast.net/68840")!
     
     var player: AVPlayer?
     
@@ -46,6 +46,7 @@ class ViewController: UIViewController {
         
         audioPlayer()
         setup()
+        getData()
         
     }
     
@@ -108,6 +109,16 @@ class ViewController: UIViewController {
         }
     }
     
+    func getData() {
+        URLSession.shared.dataTask(with: URLRequest(url: URL(string: "https://status.rcast.net/68840")!)) { data, response, error in
+            guard let data = data else { return }
+            if let json = try? JSONSerialization.jsonObject(with: data) as? [NSDictionary] {
+                print(json)
+                
+                let titleArtist = json
+            }
+        }
+    }
     
     
     @objc func playPausePressed() {
@@ -152,7 +163,8 @@ class ViewController: UIViewController {
     
     @objc func recentsPressed() {
         // Allows to reference segue destination
-//        let nvc = SongHistoryViewController(nibName: "SongHistoryViewController", bundle: nil)
+        let nvc = SongHistoryViewController(nibName: "SongHistoryViewController", bundle: nil)
+        
     }
 }
 
