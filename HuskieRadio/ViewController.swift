@@ -64,9 +64,9 @@ class ViewController: UIViewController {
         
         // Play/Pause
         playPauseButton = UIButton(frame: CGRect(x: 308, y: 660, width: 190, height: 188))
-        playPauseButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
         
         playPauseButton.addTarget(self, action: #selector(playPausePressed), for: .touchUpInside)
+        playPauseButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
         view.addSubview(playPauseButton)
         
         // Recents
@@ -131,7 +131,7 @@ class ViewController: UIViewController {
     
     
     @objc func playPausePressed() {
-        if player?.volume != 0 {
+        if (player?.volume)! > 0 {
             // "Pause"
             player?.volume = 0
             // Play Icon
