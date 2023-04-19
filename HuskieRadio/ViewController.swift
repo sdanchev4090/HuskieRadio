@@ -63,21 +63,21 @@ class ViewController: UIViewController {
         view.addSubview(songNameWebView)
         
         // Play/Pause
-        playPauseButton = UIButton(frame: CGRect(x: 311, y: 690, width: 188, height: 188))
-        playPauseButton.setBackgroundImage(UIImage(systemName: "play.fill"), for: .normal)
+        playPauseButton = UIButton(frame: CGRect(x: 308, y: 660, width: 190, height: 188))
+        playPauseButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
         
         playPauseButton.addTarget(self, action: #selector(playPausePressed), for: .touchUpInside)
         view.addSubview(playPauseButton)
         
         // Recents
-        recentsButton = UIButton(frame: CGRect(x: 50, y: 905, width: 125, height: 125))
-        recentsButton.setBackgroundImage(UIImage(systemName: "music.note.list"), for: .normal)
-        view.addSubview(recentsButton)
+//        recentsButton = UIButton(frame: CGRect(x: 50, y: 905, width: 125, height: 125))
+//        recentsButton.setBackgroundImage(UIImage(systemName: "music.note.list"), for: .normal)
+//        view.addSubview(recentsButton)
         
         // Volume
-        volButton = UIButton(frame: CGRect(x: 635, y: 905, width: 125, height: 125))
-        volButton.setBackgroundImage(UIImage(systemName: "volume.2.fill"), for: .normal)
-        view.addSubview(volButton)
+//        volButton = UIButton(frame: CGRect(x: 635, y: 905, width: 125, height: 125))
+//        volButton.setBackgroundImage(UIImage(systemName: "volume.2.fill"), for: .normal)
+//        view.addSubview(volButton)
         
         // Volume Slider
         volView = UIView(frame: CGRect(x: 645, y: 913, width: 105, height: 105))
@@ -135,13 +135,13 @@ class ViewController: UIViewController {
             // "Pause"
             player?.volume = 0
             // Play Icon
-            playPauseButton.setBackgroundImage(UIImage(systemName: "play.fill"), for: .normal)
+            playPauseButton.setBackgroundImage(UIImage(systemName: "play.circle.fill"), for: .normal)
             
         } else {
             // "Play"
-            player?.volume = 0.5
+            player?.volume = 1
             // Pause Icon
-            playPauseButton.setBackgroundImage(UIImage(systemName: "pause.fill"), for: .normal)
+            playPauseButton.setBackgroundImage(UIImage(systemName: "pause.ciircle.fill"), for: .normal)
         }
     }
     
