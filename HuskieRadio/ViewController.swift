@@ -65,6 +65,8 @@ class ViewController: UIViewController {
         // Play/Pause
         playPauseButton = UIButton(frame: CGRect(x: 311, y: 690, width: 188, height: 188))
         playPauseButton.setBackgroundImage(UIImage(systemName: "play.fill"), for: .normal)
+        
+        playPauseButton.addTarget(self, action: #selector(playPausePressed), for: .touchUpInside)
         view.addSubview(playPauseButton)
         
         // Recents
@@ -101,7 +103,7 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                   self.songArtWebView.loadHTMLString(html, baseURL: nil)
             }
-            player?.volume = 0
+            player?.volume = 1
             player?.play()
             
         } catch {
@@ -116,6 +118,13 @@ class ViewController: UIViewController {
                 let songs = json[0] as! [String:Any]
                 let currentSong = "\(songs["title"]!)"
                 print("\(songs["title"]!)")
+            }
+        }.resume()
+        
+        URLSession.shared.dataTask(with: URLRequest(url: urlSongArt)) { data, response, error in
+            guard let data = data else { return }
+            if let json2 = try? JSONSerialization.jsonObject(with: data) as? [NSDictionary] {
+                print(json2)
             }
         }.resume()
     }

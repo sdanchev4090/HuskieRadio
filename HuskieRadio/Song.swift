@@ -10,11 +10,9 @@ import UIKit
 
 class Song{
     var titleArtist: String
-    var album: String
     var songArt: UIImage?
-    init(titleArtist: String, album: String, songArt: UIImage?) {
+    init(titleArtist: String, songArt: UIImage?) {
         self.titleArtist = titleArtist
-        self.album = album
         self.songArt = songArt
     }
 }
