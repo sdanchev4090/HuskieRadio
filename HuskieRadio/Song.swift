@@ -8,17 +8,13 @@
 import Foundation
 import UIKit
 
-class song{
-    var songName: String
-    var artist: String
-    var genre: String
+class Song{
+    var titleArtist: String
     var album: String
-    var songPic: UIImage?
-    init(songName: String, artist: String, genre: String, album: String, songPic: UIImage?) {
-        self.songName = songName
-        self.artist = artist
-        self.genre = genre
+    var songArt: UIImage?
+    init(titleArtist: String, album: String, songArt: UIImage?) {
+        self.titleArtist = titleArtist
         self.album = album
-        self.songPic = songPic
+        self.songArt = songArt
     }
 }

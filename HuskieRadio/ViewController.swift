@@ -110,14 +110,14 @@ class ViewController: UIViewController {
     }
     
     func getData() {
-        URLSession.shared.dataTask(with: URLRequest(url: URL(string: "https://status.rcast.net/68840")!)) { data, response, error in
+        URLSession.shared.dataTask(with: URLRequest(url: urlRecentsList)) { data, response, error in
             guard let data = data else { return }
             if let json = try? JSONSerialization.jsonObject(with: data) as? [NSDictionary] {
-                print(json)
-                
-                let titleArtist = json
+                let songs = json[0] as! [String:Any]
+                let currentSong = "\(songs["title"]!)"
+                print("\(songs["title"]!)")
             }
-        }
+        }.resume()
     }
     
     
