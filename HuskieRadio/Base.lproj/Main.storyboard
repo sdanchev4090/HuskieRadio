@@ -1,67 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iDr-1Z-JGi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iDr-1Z-JGi">
     <device id="ipad10_2" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Huskie Radio-->
+        <!--Player-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HuskieRadio" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Player" id="BYZ-38-t0r" customClass="ViewController" customModule="HuskieRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ujl-nU-uuU">
-                                <rect key="frame" x="40" y="858" width="142" height="142"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ujl-nU-uuU">
+                                <rect key="frame" x="40" y="858" width="105" height="142"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" cornerStyle="medium">
                                     <imageReference key="image" image="music.note.list" catalog="system" symbolScale="large" variableValue="1"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="50" weight="semibold"/>
                                 </buttonConfiguration>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DsJ-3c-H9f">
-                                <rect key="frame" x="633" y="858" width="142" height="142"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DsJ-3c-H9f">
+                                <rect key="frame" x="648.5" y="858" width="126.5" height="142"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" image="volume.3.fill" catalog="system" cornerStyle="medium">
+                                <buttonConfiguration key="configuration" style="gray" image="speaker.wave.3.fill" catalog="system" cornerStyle="medium">
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="50"/>
                                 </buttonConfiguration>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="DsJ-3c-H9f" firstAttribute="baseline" secondItem="Ujl-nU-uuU" secondAttribute="baseline" id="7T2-1m-GKO"/>
+                            <constraint firstItem="Ujl-nU-uuU" firstAttribute="firstBaseline" secondItem="DsJ-3c-H9f" secondAttribute="baseline" id="aqu-5d-43I"/>
+                            <constraint firstItem="Ujl-nU-uuU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="i8A-s8-3XG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DsJ-3c-H9f" secondAttribute="trailing" constant="35" id="pzr-iB-6wJ"/>
+                            <constraint firstItem="DsJ-3c-H9f" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ujl-nU-uuU" secondAttribute="trailing" constant="8" symbolic="YES" id="wD9-0C-6Ir"/>
+                            <constraint firstItem="DsJ-3c-H9f" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="838" id="wOt-gr-teY"/>
+                            <constraint firstItem="Ujl-nU-uuU" firstAttribute="baseline" secondItem="DsJ-3c-H9f" secondAttribute="firstBaseline" id="zs2-Ac-WQw"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Player" id="DPT-1p-5mt">
                         <imageReference key="image" image="radio" catalog="system" symbolScale="medium"/>
                     </tabBarItem>
-                    <navigationItem key="navigationItem" title="Huskie Radio" largeTitleDisplayMode="always" id="Qi0-ec-vaT"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2401.4814814814813" y="-28.333333333333332"/>
+            <point key="canvasLocation" x="-782" y="-622"/>
         </scene>
-        <!--Song History View Controller-->
-        <scene sceneID="fky-rJ-0r4">
+        <!--Recents-->
+        <scene sceneID="Ja4-9O-scL">
             <objects>
-                <viewController id="Ww0-kp-gz4" customClass="SongHistoryViewController" customModule="HuskieRadio" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="p9H-ct-uI9">
+                <viewController id="Dpf-IB-ztP" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lbj-Y4-C8F">
                         <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="5VY-Dj-rA2"/>
+                        <viewLayoutGuide key="safeArea" id="LFn-kH-tHY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="tRI-Er-M9b"/>
+                    <tabBarItem key="tabBarItem" title="Recents" id="hLU-L9-kzP">
+                        <imageReference key="image" image="clock.arrow.circlepath" catalog="system" symbolScale="medium"/>
+                    </tabBarItem>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gPm-Ne-2S0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vHA-od-j5X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3186.6666666666665" y="-28.333333333333332"/>
+            <point key="canvasLocation" x="36" y="-622"/>
+        </scene>
+        <!--Schedule-->
+        <scene sceneID="rsB-4n-qso">
+            <objects>
+                <viewController id="3N7-5F-Stw" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mrO-wG-09F">
+                        <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="aQr-ws-n5J"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Schedule" id="vGQ-5d-6kK">
+                        <imageReference key="image" image="calendar" catalog="system" symbolScale="medium"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JUu-bv-BRm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="852" y="-622"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="NrP-2n-d4f">
+            <objects>
+                <viewController id="3a6-3A-JRR" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jLa-NV-X1A">
+                        <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="gY5-F9-ggn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape.2.fill" catalog="system" id="n4p-A4-hJk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wUf-56-lWZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1667" y="-622"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Bhx-Sh-SLf">
@@ -75,17 +118,23 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="x6b-3f-MTl"/>
+                        <segue destination="Dpf-IB-ztP" kind="relationship" relationship="viewControllers" id="1oO-E9-50y"/>
+                        <segue destination="3N7-5F-Stw" kind="relationship" relationship="viewControllers" id="cNG-4y-Or4"/>
+                        <segue destination="3a6-3A-JRR" kind="relationship" relationship="viewControllers" id="oHP-Vj-X9e"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9rp-Ti-WWb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1644.4444444444443" y="-28.333333333333332"/>
+            <point key="canvasLocation" x="-1666" y="-67"/>
         </scene>
     </scenes>
     <resources>
+        <image name="calendar" catalog="system" width="128" height="107"/>
+        <image name="clock.arrow.circlepath" catalog="system" width="128" height="112"/>
+        <image name="gearshape.2.fill" catalog="system" width="128" height="101"/>
         <image name="music.note.list" catalog="system" width="128" height="115"/>
         <image name="radio" catalog="system" width="128" height="115"/>
-        <image name="volume.3.fill" catalog="system" width="128" height="84"/>
+        <image name="speaker.wave.3.fill" catalog="system" width="128" height="84"/>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

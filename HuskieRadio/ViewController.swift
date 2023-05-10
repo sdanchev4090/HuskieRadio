@@ -117,7 +117,7 @@ class ViewController: UIViewController {
             if let json = try? JSONSerialization.jsonObject(with: data) as? [NSDictionary] {
                 let songs = json[0] as! [String:Any]
                 let currentSong = "\(songs["title"]!)"
-                print("\(songs["title"]!)")
+                print(currentSong)
             }
         }.resume()
         
@@ -172,8 +172,6 @@ class ViewController: UIViewController {
     
     @objc func recentsPressed() {
         // Allows to reference segue destination
-        let nvc = SongHistoryViewController(nibName: "SongHistoryViewController", bundle: nil)
-        
     }
 }
 
