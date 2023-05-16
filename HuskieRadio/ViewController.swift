@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     let urlTitleArtist = URL(string: "https://status.rcast.net/68840")!
     let urlRecentsList = URL(string: "https://playlist.rcast.net/68840")!
     
+    var currentSong = ""
+    
     var player: AVPlayer?
     
     //---------------------------------------------//
@@ -116,8 +118,9 @@ class ViewController: UIViewController {
             guard let data = data else { return }
             if let json = try? JSONSerialization.jsonObject(with: data) as? [NSDictionary] {
                 let songs = json[0] as! [String:Any]
-                let currentSong = "\(songs["title"]!)"
-                print(currentSong)
+                self.currentSong = "\(songs["title"]!)"
+                print(self.currentSong)
+                // keep looping until data chnages
             }
         }.resume()
         
