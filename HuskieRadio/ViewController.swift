@@ -65,11 +65,12 @@ class ViewController: UIViewController {
         view.addSubview(songNameWebView)
         
         // Play/Pause
-        playPauseButton = UIButton(frame: CGRect(x: 308, y: 660, width: 190, height: 188))
+        playPauseButton.frame = CGRect(x: 308, y: 660, width: 190, height: 188)
         
         playPauseButton.addTarget(self, action: #selector(playPausePressed), for: .touchUpInside)
         playPauseButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
         view.addSubview(playPauseButton)
+        
         
         // Recents
 //        recentsButton = UIButton(frame: CGRect(x: 50, y: 905, width: 125, height: 125))
@@ -81,17 +82,17 @@ class ViewController: UIViewController {
 //        volButton.setBackgroundImage(UIImage(systemName: "volume.2.fill"), for: .normal)
 //        view.addSubview(volButton)
         
-        // Volume Slider
-        volView = UIView(frame: CGRect(x: 645, y: 913, width: 105, height: 105))
-        volView.backgroundColor = .blue
-        volView.layer.cornerRadius = 15
-        volView.clipsToBounds = true
-        
-        volSlider = UISlider(frame: CGRect(x: 697.5, y: 738, width: 300, height: 20))
-        volSlider.center = CGPoint(x: 697.5 , y: 738)
-        let rotate : CGAffineTransform = CGAffineTransformIdentity
-        volSlider.transform = CGAffineTransformRotate(rotate, .pi*3/2)
-        volSlider.tintColor = .systemOrange
+//        // Volume Slider
+//        volView = UIView(frame: CGRect(x: 645, y: 913, width: 105, height: 105))
+//        volView.backgroundColor = .blue
+//        volView.layer.cornerRadius = 15
+//        volView.clipsToBounds = true
+//
+//        volSlider = UISlider(frame: CGRect(x: 697.5, y: 738, width: 300, height: 20))
+//        volSlider.center = CGPoint(x: 697.5 , y: 738)
+//        let rotate : CGAffineTransform = CGAffineTransformIdentity
+//        volSlider.transform = CGAffineTransformRotate(rotate, .pi*3/2)
+//        volSlider.tintColor = .systemOrange
     }
     
     func audioPlayer() {
