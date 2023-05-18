@@ -30,18 +30,13 @@ class ViewController: UIViewController {
         webView.contentMode = .scaleAspectFill
         return webView
     }()
-    private let songNameWebView: WKWebView = {
-        let webView = WKWebView()
-        webView.contentMode = .scaleAspectFill
-        return webView
-    }()
     private let testSongArtWebView: WKWebView = {
         let webView = WKWebView()
         webView.contentMode = .scaleAspectFill
         return webView
     }()
-
     
+    var songTitle: UILabel!
     var playPauseButton: UIButton!
     var recentsButton: UIButton!
     var volButton: UIButton!
@@ -67,14 +62,14 @@ class ViewController: UIViewController {
         view.addSubview(songArtWebView)
         
         // Test Song Art
-        testSongArtWebView.frame = CGRect(x: 205, y: 120, width: 400, height: 400)
+        testSongArtWebView.frame = CGRect(x: 205, y: 120, width: 430, height: 430)
         testSongArtWebView.layer.cornerRadius = 25
         testSongArtWebView.clipsToBounds = true
         view.addSubview(testSongArtWebView)
         
         // Song Name
-        songNameWebView.frame = CGRect(x: 105, y: 590, width: 500, height: 100)
-        view.addSubview(songNameWebView)
+//        songTitle.frame = CGRect(x: 205, y: 335, width: 410, height: 29)
+//        songTitle.font = .boldSystemFont(ofSize: 15)
         
         // Play/Pause
         playPauseButton = UIButton(frame: CGRect(x: 308, y: 660, width: 190, height: 188))
@@ -82,28 +77,6 @@ class ViewController: UIViewController {
         playPauseButton.addTarget(self, action: #selector(playPausePressed), for: .touchUpInside)
         playPauseButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
         view.addSubview(playPauseButton)
-        
-        // Recents
-//        recentsButton = UIButton(frame: CGRect(x: 50, y: 905, width: 125, height: 125))
-//        recentsButton.setBackgroundImage(UIImage(systemName: "music.note.list"), for: .normal)
-//        view.addSubview(recentsButton)
-        
-        // Volume
-//        volButton = UIButton(frame: CGRect(x: 635, y: 905, width: 125, height: 125))
-//        volButton.setBackgroundImage(UIImage(systemName: "volume.2.fill"), for: .normal)
-//        view.addSubview(volButton)
-        
-        // Volume Slider
-        volView = UIView(frame: CGRect(x: 645, y: 913, width: 105, height: 105))
-        volView.backgroundColor = .blue
-        volView.layer.cornerRadius = 15
-        volView.clipsToBounds = true
-        
-        volSlider = UISlider(frame: CGRect(x: 697.5, y: 738, width: 300, height: 20))
-        volSlider.center = CGPoint(x: 697.5 , y: 738)
-        let rotate : CGAffineTransform = CGAffineTransformIdentity
-        volSlider.transform = CGAffineTransformRotate(rotate, .pi*3/2)
-        volSlider.tintColor = .systemOrange
     }
     
     func audioPlayer() {
@@ -135,9 +108,13 @@ class ViewController: UIViewController {
                 // keep looping until data chnages
             }
             let url = self.urlSongArt
+            let link = self.urlTitleArtist
             DispatchQueue.main.async {
                 let contents = URL(string: try! String(contentsOf: url))!
+                let contents2 = try! String(contentsOf: link)
                 self.testSongArtWebView.load(NSURLRequest(url: contents) as URLRequest)
+                self.songTitle.text = contents2
+                
             }
         }.resume()
         
