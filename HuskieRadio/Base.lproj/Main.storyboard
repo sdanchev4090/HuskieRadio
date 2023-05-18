@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iDr-1Z-JGi">
-    <device id="ipad10_2" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <device id="ipad10_2" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
@@ -15,7 +15,7 @@
             <objects>
                 <viewController title="Player" id="BYZ-38-t0r" customClass="ViewController" customModule="HuskieRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1080" height="810"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
@@ -34,7 +34,7 @@
             <objects>
                 <viewController id="Dpf-IB-ztP" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lbj-Y4-C8F">
-                        <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1080" height="810"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="LFn-kH-tHY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -52,7 +52,7 @@
             <objects>
                 <viewController id="3N7-5F-Stw" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mrO-wG-09F">
-                        <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1080" height="810"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="aQr-ws-n5J"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -70,7 +70,7 @@
             <objects>
                 <viewController id="3a6-3A-JRR" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jLa-NV-X1A">
-                        <rect key="frame" x="0.0" y="0.0" width="810" height="1080"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1080" height="810"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="gY5-F9-ggn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
