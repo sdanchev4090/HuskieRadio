@@ -35,6 +35,12 @@ class ViewController: UIViewController {
         webView.contentMode = .scaleAspectFill
         return webView
     }()
+    private let testSongArtWebView: WKWebView = {
+        let webView = WKWebView()
+        webView.contentMode = .scaleAspectFill
+        return webView
+    }()
+
     
     var playPauseButton: UIButton!
     var recentsButton: UIButton!
@@ -59,6 +65,12 @@ class ViewController: UIViewController {
         songArtWebView.layer.cornerRadius = 25
         songArtWebView.clipsToBounds = true
         view.addSubview(songArtWebView)
+        
+        // Test Song Art
+        testSongArtWebView.frame = CGRect(x: 205, y: 120, width: 400, height: 400)
+        testSongArtWebView.layer.cornerRadius = 25
+        testSongArtWebView.clipsToBounds = true
+        view.addSubview(testSongArtWebView)
         
         // Song Name
         songNameWebView.frame = CGRect(x: 105, y: 590, width: 500, height: 100)
@@ -104,11 +116,11 @@ class ViewController: UIViewController {
             let html = "<!-- RCAST.NET - START EMBEDDED PLAYER --> <iframe width=\"500\" height=\"500\" src=\"https://players.rcast.net/artistimageonly/68840\" frameborder=\"0\" scrolling= \"no\" allow=\"autoplay\"></iframe> <div style=\"overflow:hidden; height:0px; width:0px;\"><a href=\"https://www.rcast.net\" title=\"Internet Radio Hosting\">RCAST.NET</a></div> <!-- RCAST.NET - END EMBEDDED PLAYER -->"
             
             DispatchQueue.main.async {
-                  self.songArtWebView.loadHTMLString(html, baseURL: nil)
+                self.songArtWebView.loadHTMLString(html, baseURL: nil)
             }
             player?.volume = 1
             player?.play()
-            
+
         } catch {
             print("Error Occurred")
         }
@@ -123,14 +135,13 @@ class ViewController: UIViewController {
                 print(self.currentSong)
                 // keep looping until data chnages
             }
-        }.resume()
-        
-        URLSession.shared.dataTask(with: URLRequest(url: urlSongArt)) { data, response, error in
-            guard let data = data else { return }
-            if let json2 = try? JSONSerialization.jsonObject(with: data) as? [NSDictionary] {
-                print(json2)
+            let url = self.urlSongArt
+            DispatchQueue.main.async {
+                let contents = URL(string: try! String(contentsOf: url))!
+                self.testSongArtWebView.load(NSURLRequest(url: contents) as URLRequest)
             }
         }.resume()
+        
     }
     
     
