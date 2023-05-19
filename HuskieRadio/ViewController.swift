@@ -69,10 +69,10 @@ class ViewController: UIViewController {
         view.addSubview(songTitle)
         
         // Play/Pause
-        playPauseButton.frame = CGRect(x: 308, y: 660, width: 190, height: 188)
+        playPauseButton.frame = CGRect(x: 308, y: 500, width: 190, height: 188)
         
         playPauseButton.addTarget(self, action: #selector(playPausePressed), for: .touchUpInside)
-        playPauseButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
+        playPauseButton.setBackgroundImage(UIImage(systemName: "play.circle.fill"), for: .normal)
         view.addSubview(playPauseButton)
         
         
@@ -107,9 +107,10 @@ class ViewController: UIViewController {
             guard let data = data else { return }
             if let json = try? JSONSerialization.jsonObject(with: data) as? [NSDictionary] {
                 let songs = json[0] as! [String:Any]
-                self.currentSong = "\(songs["title"]!)"
-                print(self.currentSong)
-                // keep looping until data chnages
+                print(songs)
+                // from position 1-11 for table view
+                
+                // keep looping until data changes
             }
             let url = self.urlSongArt
             let link = self.urlTitleArtist
@@ -124,9 +125,8 @@ class ViewController: UIViewController {
         
     }
     
-    
     @objc func playPausePressed() {
-        if (player?.volume)! > 0 {
+        if playPauseButton.currentBackgroundImage != UIImage(systemName: "play.circle.fill") {
             // "Pause"
             player?.volume = 0
             // Play Icon
@@ -136,7 +136,7 @@ class ViewController: UIViewController {
             // "Play"
             player?.volume = 1
             // Pause Icon
-            playPauseButton.setBackgroundImage(UIImage(systemName: "pause.ciircle.fill"), for: .normal)
+            playPauseButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
         }
     }
     
