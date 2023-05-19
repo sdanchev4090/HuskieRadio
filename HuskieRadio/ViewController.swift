@@ -36,12 +36,9 @@ class ViewController: UIViewController {
         return webView
     }()
     
-    var songTitle: UILabel!
-    var playPauseButton: UIButton!
-    var recentsButton: UIButton!
-    var volButton: UIButton!
-    var volView: UIView!
-    var volSlider: UISlider!
+    var songTitle = UILabel(frame: CGRect(x: 265, y: 445, width: 410, height: 29))
+    var playPauseButton = UIButton()
+    var recentsButton = UIButton()
     
 
     override func viewDidLoad() {
@@ -68,14 +65,14 @@ class ViewController: UIViewController {
         view.addSubview(testSongArtWebView)
         
         // Song Name
-//        songTitle.frame = CGRect(x: 205, y: 335, width: 410, height: 29)
-//        songTitle.font = .boldSystemFont(ofSize: 15)
+        songTitle.font = .boldSystemFont(ofSize: 24)
+        view.addSubview(songTitle)
         
         // Play/Pause
-        playPauseButton.frame = CGRect(x: 308, y: 660, width: 190, height: 188)
+        playPauseButton.frame = CGRect(x: 308, y: 500, width: 190, height: 188)
         
         playPauseButton.addTarget(self, action: #selector(playPausePressed), for: .touchUpInside)
-        playPauseButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
+        playPauseButton.setBackgroundImage(UIImage(systemName: "play.circle.fill"), for: .normal)
         view.addSubview(playPauseButton)
         
         
@@ -84,22 +81,6 @@ class ViewController: UIViewController {
 //        recentsButton.setBackgroundImage(UIImage(systemName: "music.note.list"), for: .normal)
 //        view.addSubview(recentsButton)
         
-        // Volume
-//        volButton = UIButton(frame: CGRect(x: 635, y: 905, width: 125, height: 125))
-//        volButton.setBackgroundImage(UIImage(systemName: "volume.2.fill"), for: .normal)
-//        view.addSubview(volButton)
-        
-//        // Volume Slider
-//        volView = UIView(frame: CGRect(x: 645, y: 913, width: 105, height: 105))
-//        volView.backgroundColor = .blue
-//        volView.layer.cornerRadius = 15
-//        volView.clipsToBounds = true
-//
-//        volSlider = UISlider(frame: CGRect(x: 697.5, y: 738, width: 300, height: 20))
-//        volSlider.center = CGPoint(x: 697.5 , y: 738)
-//        let rotate : CGAffineTransform = CGAffineTransformIdentity
-//        volSlider.transform = CGAffineTransformRotate(rotate, .pi*3/2)
-//        volSlider.tintColor = .systemOrange
     }
     
     func audioPlayer() {
@@ -126,9 +107,10 @@ class ViewController: UIViewController {
             guard let data = data else { return }
             if let json = try? JSONSerialization.jsonObject(with: data) as? [NSDictionary] {
                 let songs = json[0] as! [String:Any]
-                self.currentSong = "\(songs["title"]!)"
-                print(self.currentSong)
-                // keep looping until data chnages
+                print(songs)
+                // from position 1-11 for table view
+                
+                // keep looping until data changes
             }
             let url = self.urlSongArt
             let link = self.urlTitleArtist
@@ -143,9 +125,8 @@ class ViewController: UIViewController {
         
     }
     
-    
     @objc func playPausePressed() {
-        if (player?.volume)! > 0 {
+        if playPauseButton.currentBackgroundImage != UIImage(systemName: "play.circle.fill") {
             // "Pause"
             player?.volume = 0
             // Play Icon
@@ -155,32 +136,7 @@ class ViewController: UIViewController {
             // "Play"
             player?.volume = 1
             // Pause Icon
-            playPauseButton.setBackgroundImage(UIImage(systemName: "pause.ciircle.fill"), for: .normal)
-        }
-    }
-    
-    @objc func volumePressed() {
-        // Volume Pop-up
-        let inset : CGFloat = 10
-        let volStFrame = CGRect(x: volButton.frame.minX + inset,
-                                y: volButton.frame.minY+8,
-                                width: volButton.frame.width-(inset*2),
-                                height: volButton.frame.width-(inset*2))
-        let volOpenFrame = CGRect(x: volStFrame.minX,
-                                  y: volStFrame.minY-(playPauseButton.frame.height+(85*2)),
-                                  width: volStFrame.width,
-                                  height: playPauseButton.frame.height+(90*2))
-        
-        // UIView expands + reveals volume slider
-        if volView.frame == volStFrame {
-            UIView.animate(withDuration: 0.3, delay: 0) {
-                self.volView.frame = volOpenFrame
-            }
-
-        } else {
-            UIView.animate(withDuration: 0.3, delay: 0) {
-                self.volView.frame = volStFrame
-            }
+            playPauseButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
         }
     }
     
