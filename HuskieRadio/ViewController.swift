@@ -12,6 +12,9 @@ import WebKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var tabBarBG: UIView!
+    @IBOutlet weak var recentsBG: UIView!
+    
     let urlHQ = "https://cast3.asurahosting.com/proxy/johnhers/stream"
     let urlLQ = "https://cast3.asurahosting.com/proxy/johnhers/stream2"
     
@@ -35,11 +38,12 @@ class ViewController: UIViewController {
         webView.contentMode = .scaleAspectFill
         return webView
     }()
+
     
-    var songTitle = UILabel(frame: CGRect(x: 265, y: 445, width: 410, height: 29))
+
+    var songTitle = UILabel(frame: CGRect(x: 92, y: 620, width: 410, height: 29))
     var playPauseButton = UIButton()
     var recentsButton = UIButton()
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,34 +56,38 @@ class ViewController: UIViewController {
     
         
     func setup() {
+        // TabBar
+        tabBarBG.layer.cornerRadius = 30
+        tabBarBG.clipsToBounds = true
+        
+        // Recently Played
+        recentsBG.layer.cornerRadius = 30
+        recentsBG.clipsToBounds = true
+        
         // Song Art
-        songArtWebView.frame = CGRect(x: 205, y: 120, width: 400, height: 400)
+        songArtWebView.frame = CGRect(x: 82, y: 165, width: 400, height: 400)
         songArtWebView.layer.cornerRadius = 25
-        songArtWebView.clipsToBounds = true
+        songArtWebView.clipsToBounds = false
         view.addSubview(songArtWebView)
         
         // Test Song Art
-        testSongArtWebView.frame = CGRect(x: 205, y: 120, width: 430, height: 430)
-        testSongArtWebView.layer.cornerRadius = 25
-        testSongArtWebView.clipsToBounds = true
-        view.addSubview(testSongArtWebView)
+//        testSongArtWebView.frame = CGRect(x: 92, y: 566, width: 400, height: 400)
+//        testSongArtWebView.layer.cornerRadius = 25
+//        testSongArtWebView.clipsToBounds = true
+//        view.addSubview(testSongArtWebView)
         
         // Song Name
         songTitle.font = .boldSystemFont(ofSize: 24)
         view.addSubview(songTitle)
         
         // Play/Pause
-        playPauseButton.frame = CGRect(x: 308, y: 500, width: 190, height: 188)
+        playPauseButton = UIButton(frame: CGRect(x: 397, y: 485, width: 140, height: 140))
         
         playPauseButton.addTarget(self, action: #selector(playPausePressed), for: .touchUpInside)
-        playPauseButton.setBackgroundImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+        playPauseButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
+        
         view.addSubview(playPauseButton)
         
-        
-        // Recents
-//        recentsButton = UIButton(frame: CGRect(x: 50, y: 905, width: 125, height: 125))
-//        recentsButton.setBackgroundImage(UIImage(systemName: "music.note.list"), for: .normal)
-//        view.addSubview(recentsButton)
         
     }
     
@@ -109,21 +117,21 @@ class ViewController: UIViewController {
                 let songs = json[0] as! [String:Any]
                 print(songs)
                 // from position 1-11 for table view
-                
-                // keep looping until data changes
+                // keep looping until data chnages
             }
             let url = self.urlSongArt
-            let link = self.urlTitleArtist
-            DispatchQueue.main.async {
-                let contents = URL(string: try! String(contentsOf: url))!
-                let contents2 = try! String(contentsOf: link)
-                self.testSongArtWebView.load(NSURLRequest(url: contents) as URLRequest)
-                self.songTitle.text = contents2
-                
-            }
+                        let link = self.urlTitleArtist
+                        DispatchQueue.main.async {
+                            let contents = URL(string: try! String(contentsOf: url))!
+                            let contents2 = try! String(contentsOf: link)
+                            self.testSongArtWebView.load(NSURLRequest(url: contents) as URLRequest)
+                            self.songTitle.text = contents2
+                            
+                        }
         }.resume()
         
     }
+    
     
     @objc func playPausePressed() {
         if playPauseButton.currentBackgroundImage != UIImage(systemName: "play.circle.fill") {
@@ -139,6 +147,8 @@ class ViewController: UIViewController {
             playPauseButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
         }
     }
+    
+ 
     
     @objc func recentsPressed() {
         // Allows to reference segue destination
