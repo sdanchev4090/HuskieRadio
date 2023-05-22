@@ -67,7 +67,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="62" translatesAutoresizingMaskIntoConstraints="NO" id="X8t-OE-knF">
-                                        <rect key="frame" x="0.0" y="0.0" width="488.5" height="34"/>
+                                        <rect key="frame" x="0.0" y="22" width="488.5" height="34"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JyA-C1-qVy">
                                                 <rect key="frame" x="0.0" y="0.0" width="121.5" height="34"/>
@@ -105,6 +105,7 @@
                     <navigationItem key="navigationItem" id="Uy1-u1-hUn"/>
                     <connections>
                         <outlet property="recentsBG" destination="NSA-F9-U5U" id="j9X-R4-jYJ"/>
+                        <outlet property="recentsTableView" destination="NEQ-0b-jCs" id="2mM-u2-HFN"/>
                         <outlet property="tabBarBG" destination="SJe-Qp-gnK" id="qTv-Om-9HB"/>
                     </connections>
                 </viewController>

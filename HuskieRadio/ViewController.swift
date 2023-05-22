@@ -10,10 +10,12 @@ import AVKit
 import MediaPlayer
 import WebKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tabBarBG: UIView!
     @IBOutlet weak var recentsBG: UIView!
+    
+    @IBOutlet weak var recentsTableView: UITableView!
     
     let urlHQ = "https://cast3.asurahosting.com/proxy/johnhers/stream"
     let urlLQ = "https://cast3.asurahosting.com/proxy/johnhers/stream2"
@@ -23,6 +25,7 @@ class ViewController: UIViewController {
     let urlRecentsList = URL(string: "https://playlist.rcast.net/68840")!
     
     var currentSong = ""
+    var recentsArray : [Song] = []
     
     var player: AVPlayer?
     
@@ -52,6 +55,8 @@ class ViewController: UIViewController {
         setup()
         getData()
         
+        recentsTableView.delegate = self
+        recentsTableView.dataSource = self
     }
     
         
@@ -131,6 +136,21 @@ class ViewController: UIViewController {
         }.resume()
         
     }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return recentsArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = recentsTableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+        var content = cell.defaultContentConfiguration()
+        content.text = recentsArray[indexPath.row].titleArtist
+        content.secondaryText = recentsArray[indexPath.row].titleArtist
+        cell.contentConfiguration = content
+        return cell
+    }
+    
     
     
     @objc func playPausePressed() {
