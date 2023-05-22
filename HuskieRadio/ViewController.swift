@@ -74,12 +74,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         songArtWebView.layer.cornerRadius = 25
         songArtWebView.clipsToBounds = false
         view.addSubview(songArtWebView)
-        
-        // Test Song Art
-//        testSongArtWebView.frame = CGRect(x: 92, y: 566, width: 400, height: 400)
-//        testSongArtWebView.layer.cornerRadius = 25
-//        testSongArtWebView.clipsToBounds = true
-//        view.addSubview(testSongArtWebView)
+
         
         // Song Name
         songTitle.font = .boldSystemFont(ofSize: 24)
@@ -168,10 +163,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
- 
-    
-    @objc func recentsPressed() {
-        // Allows to reference segue destination
-    }
+
 }
 
