@@ -63,11 +63,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func setup() {
         // TabBar
         tabBarBG.layer.cornerRadius = 30
-        tabBarBG.clipsToBounds = true
+        tabBarBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         // Recently Played
         recentsBG.layer.cornerRadius = 30
-        recentsBG.clipsToBounds = true
+        recentsBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         
         // Song Art
         songArtWebView.frame = CGRect(x: 82, y: 165, width: 400, height: 400)
@@ -81,11 +81,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         view.addSubview(songTitle)
         
         // Play/Pause
-        playPauseButton = UIButton(frame: CGRect(x: 397, y: 485, width: 140, height: 140))
-        
+        playPauseButton = UIButton(frame: CGRect(x: 397, y: 485, width: 140, height: 137))
         playPauseButton.addTarget(self, action: #selector(playPausePressed), for: .touchUpInside)
         playPauseButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
-        
+        playPauseButton.tintColor = UIColor(named: "AccentColor")
         view.addSubview(playPauseButton)
         
         
