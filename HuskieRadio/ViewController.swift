@@ -120,14 +120,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 // keep looping until data chnages
             }
             let url = self.urlSongArt
-                        let link = self.urlTitleArtist
-                        DispatchQueue.main.async {
-                            let contents = URL(string: try! String(contentsOf: url))!
-                            let contents2 = try! String(contentsOf: link)
-                            self.testSongArtWebView.load(NSURLRequest(url: contents) as URLRequest)
-                            self.songTitle.text = contents2
-                            
-                        }
+            let link = self.urlTitleArtist
+            DispatchQueue.main.async {
+                var contents = URL(string: try! String(contentsOf: url))!
+                var contents2 = try! String(contentsOf: link)
+                let timer = Timer.scheduledTimer(withTimeInterval: 15, repeats: true) { timer in
+                    print(contents)
+                    //                    var newContents = URL(string: try! String(contentsOf: url))!
+                    //                    if contents != newContents {
+                    //                        print(newContents)
+                    //                    } else {
+                    //                        print(contents)
+                    //                    }
+                }
+                timer.fire()
+                self.testSongArtWebView.load(NSURLRequest(url: contents) as URLRequest)
+                self.songTitle.text = contents2
+                
+            }
+
         }.resume()
         
     }
