@@ -36,17 +36,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         webView.contentMode = .scaleAspectFill
         return webView
     }()
-    private let testSongArtWebView: WKWebView = {
-        let webView = WKWebView()
-        webView.contentMode = .scaleAspectFill
-        return webView
-    }()
 
     
-
     var songTitle = UILabel(frame: CGRect(x: 92, y: 620, width: 410, height: 29))
     var playPauseButton = UIButton()
     var recentsButton = UIButton()
+    var testSongArtView = UIImageView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +74,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Song Name
         songTitle.font = .boldSystemFont(ofSize: 24)
         view.addSubview(songTitle)
+       
+        // Test Song Art View
+        testSongArtView.frame = CGRect(x: 82, y: 165, width: 400, height: 400)
+        testSongArtView.layer.cornerRadius = 25
+        testSongArtView.clipsToBounds = false
+        view.addSubview(testSongArtView)
         
         // Play/Pause
         playPauseButton = UIButton(frame: CGRect(x: 397, y: 485, width: 140, height: 137))
@@ -123,18 +124,33 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             DispatchQueue.main.async {
                 var contents = URL(string: try! String(contentsOf: url))!
                 var contents2 = try! String(contentsOf: link)
+                if let data = try? Data(contentsOf: contents){
+                    if let image = UIImage(data: data) {
+                        DispatchQueue.main.async {
+                            self.testSongArtView.image = image
+                        }
+                    }
+                }
+                self.songTitle.text = contents2
                 let timer = Timer.scheduledTimer(withTimeInterval: 15, repeats: true) { timer in
-                    print(contents)
-                    //                    var newContents = URL(string: try! String(contentsOf: url))!
-                    //                    if contents != newContents {
-                    //                        print(newContents)
-                    //                    } else {
-                    //                        print(contents)
-                    //                    }
+                    let newContents = URL(string: try! String(contentsOf: url))!
+                    let newContents2 = try! String(contentsOf: link)
+                    if contents != newContents {
+                        contents = newContents
+                        contents2 = newContents2
+                        if let data = try? Data(contentsOf: contents){
+                            if let image = UIImage(data: data) {
+                                DispatchQueue.main.async {
+                                    self.testSongArtView.image = image
+                                }
+                            }
+                        }
+                        self.songTitle.text = contents2
+                    } else {
+                        return
+                    }
                 }
                 timer.fire()
-                self.testSongArtWebView.load(NSURLRequest(url: contents) as URLRequest)
-                self.songTitle.text = contents2
                 
             }
 
