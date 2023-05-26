@@ -134,10 +134,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                             if let image = UIImage(data: data) {
                                 DispatchQueue.main.async {
                                     self.testSongArtView.image = image
+                                    self.songTitle.text = contents2
                                 }
                             }
                         }
-                        self.songTitle.text = contents2
                     } else {
                         return
                     }
