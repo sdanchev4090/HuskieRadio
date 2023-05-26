@@ -78,7 +78,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Test Song Art View
         testSongArtView.frame = CGRect(x: 82, y: 165, width: 400, height: 400)
         testSongArtView.layer.cornerRadius = 25
-        testSongArtView.clipsToBounds = false
         view.addSubview(testSongArtView)
         
         // Play/Pause
@@ -95,13 +94,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
             player = AVPlayer(url: URL.init(string: urlHQ)!)
-            
-            // Current Song Art HTML
-            let html = "<!-- RCAST.NET - START EMBEDDED PLAYER --> <iframe width=\"500\" height=\"500\" src=\"https://players.rcast.net/artistimageonly/68840\" frameborder=\"0\" scrolling= \"no\" allow=\"autoplay\"></iframe> <div style=\"overflow:hidden; height:0px; width:0px;\"><a href=\"https://www.rcast.net\" title=\"Internet Radio Hosting\">RCAST.NET</a></div> <!-- RCAST.NET - END EMBEDDED PLAYER -->"
-            
-            DispatchQueue.main.async {
-                self.songArtWebView.loadHTMLString(html, baseURL: nil)
-            }
             player?.volume = 1
             player?.play()
 
@@ -121,17 +113,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
             let url = self.urlSongArt
             let link = self.urlTitleArtist
-            DispatchQueue.main.async {
+            DispatchQueue.global().async {
                 var contents = URL(string: try! String(contentsOf: url))!
                 var contents2 = try! String(contentsOf: link)
                 if let data = try? Data(contentsOf: contents){
                     if let image = UIImage(data: data) {
                         DispatchQueue.main.async {
                             self.testSongArtView.image = image
+                            self.songTitle.text = contents2
                         }
                     }
                 }
-                self.songTitle.text = contents2
                 let timer = Timer.scheduledTimer(withTimeInterval: 15, repeats: true) { timer in
                     let newContents = URL(string: try! String(contentsOf: url))!
                     let newContents2 = try! String(contentsOf: link)
@@ -158,7 +150,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return recentsArray.count
     }
