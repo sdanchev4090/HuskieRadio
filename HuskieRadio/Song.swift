@@ -9,10 +9,11 @@ import Foundation
 import UIKit
 
 class Song{
-    var titleArtist: String
-    var songArt: UIImage?
-    init(titleArtist: String, songArt: UIImage?) {
-        self.titleArtist = titleArtist
-        self.songArt = songArt
+    var title: String
+    var artist: String
+    
+    init(title: String, artist: String) {
+        self.title = title
+        self.artist = artist
     }
 }

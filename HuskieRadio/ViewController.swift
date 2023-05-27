@@ -30,18 +30,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var player: AVPlayer?
     
     //---------------------------------------------//
-    
-    private let songArtWebView: WKWebView = {
-        let webView = WKWebView()
-        webView.contentMode = .scaleAspectFill
-        return webView
-    }()
-
-    
-    var songTitle = UILabel(frame: CGRect(x: 92, y: 620, width: 410, height: 29))
+        
+    var songTitle = UILabel()
     var playPauseButton = UIButton()
     var recentsButton = UIButton()
-    var testSongArtView = UIImageView()
+    var songArtImageView = UIImageView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,30 +57,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         recentsBG.layer.cornerRadius = 30
         recentsBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         
-        // Song Art
-        songArtWebView.frame = CGRect(x: 82, y: 165, width: 400, height: 400)
-        songArtWebView.layer.cornerRadius = 25
-        songArtWebView.clipsToBounds = false
-        view.addSubview(songArtWebView)
-
-        
         // Song Name
+        songTitle.frame = CGRect(x: 92, y: 636, width: 410, height: 29)
         songTitle.font = .boldSystemFont(ofSize: 24)
         view.addSubview(songTitle)
        
-        // Test Song Art View
-        testSongArtView.frame = CGRect(x: 82, y: 165, width: 400, height: 400)
-        testSongArtView.layer.cornerRadius = 25
-        view.addSubview(testSongArtView)
+        // Song Art Image View
+        songArtImageView.frame = CGRect(x: 82, y: 165, width: 430, height: 430)
+        songArtImageView.layer.cornerRadius = 25
+        songArtImageView.layer.masksToBounds = true
+        view.addSubview(songArtImageView)
         
         // Play/Pause
-        playPauseButton = UIButton(frame: CGRect(x: 397, y: 485, width: 140, height: 137))
+        playPauseButton = UIButton(frame: CGRect(x: 400, y: 485, width: 140, height: 135))
         playPauseButton.addTarget(self, action: #selector(playPausePressed), for: .touchUpInside)
         playPauseButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
         playPauseButton.tintColor = UIColor(named: "AccentColor")
+        let rect = CGRect(x: 400, y: 485, width: 140, height: 135)
+        let circle = UIBezierPath(ovalIn: rect)
+        // circle color = white
         view.addSubview(playPauseButton)
         
-        
+        // Recently Played Table View
+        recentsTableView.layer.cornerRadius = 25
+        recentsTableView.layer.masksToBounds = true
     }
     
     func audioPlayer() {
@@ -106,10 +99,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         URLSession.shared.dataTask(with: URLRequest(url: urlRecentsList)) { data, response, error in
             guard let data = data else { return }
             if let json = try? JSONSerialization.jsonObject(with: data) as? [NSDictionary] {
-                let songs = json[0] as! [String:Any]
-                print(songs)
-                // from position 1-11 for table view
-                // keep looping until data chnages
+//                let songs = json[0] as! [String:Any]
+//                print(songs)
+                for song in json[1...10] {
+                    let song_artist = song.object(forKey: "title") as! String
+                    let saSplit = song_artist.split(separator: " - ", maxSplits: 1, omittingEmptySubsequences: true)
+                    let title = String(saSplit[0])
+                    let artist = String(saSplit[1])
+                    
+                    self.recentsArray.append(Song(title: title, artist: artist))
+                }
+                DispatchQueue.main.async {
+                    self.recentsTableView.reloadData()
+                }
             }
             let url = self.urlSongArt
             let link = self.urlTitleArtist
@@ -119,7 +121,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 if let data = try? Data(contentsOf: contents){
                     if let image = UIImage(data: data) {
                         DispatchQueue.main.async {
-                            self.testSongArtView.image = image
+                            self.songArtImageView.image = image
                             self.songTitle.text = contents2
                         }
                     }
@@ -133,7 +135,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         if let data = try? Data(contentsOf: contents){
                             if let image = UIImage(data: data) {
                                 DispatchQueue.main.async {
-                                    self.testSongArtView.image = image
+                                    self.songArtImageView.image = image
                                     self.songTitle.text = contents2
                                 }
                             }
@@ -158,8 +160,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = recentsTableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
         var content = cell.defaultContentConfiguration()
-        content.text = recentsArray[indexPath.row].titleArtist
-        content.secondaryText = recentsArray[indexPath.row].titleArtist
+        content.text = recentsArray[indexPath.row].title
+        content.secondaryText = recentsArray[indexPath.row].artist
         cell.contentConfiguration = content
         return cell
     }
