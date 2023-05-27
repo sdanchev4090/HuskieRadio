@@ -121,33 +121,31 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         DispatchQueue.main.async {
                             self.testSongArtView.image = image
                             self.songTitle.text = contents2
-                        }
-                    }
-                }
-                let timer = Timer.scheduledTimer(withTimeInterval: 15, repeats: true) { timer in
-                    let newContents = URL(string: try! String(contentsOf: url))!
-                    let newContents2 = try! String(contentsOf: link)
-                    if contents != newContents {
-                        contents = newContents
-                        contents2 = newContents2
-                        if let data = try? Data(contentsOf: contents){
-                            if let image = UIImage(data: data) {
-                                DispatchQueue.main.async {
-                                    self.testSongArtView.image = image
-                                    self.songTitle.text = contents2
+                            let time = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { time in
+                                let newContents = URL(string: try! String(contentsOf: url))!
+                                let newContents2 = try! String(contentsOf: link) 
+                                if contents != newContents{
+                                    contents = newContents
+                                    contents2 = newContents2
+                                    DispatchQueue.global().async {
+                                        if let data = try? Data(contentsOf: contents) {
+                                        if let image = UIImage(data: data){
+                                            DispatchQueue.main.async {
+                                                self.testSongArtView.image = image
+                                                self.songTitle.text = contents2
+                                            }
+                                        }
+                                    }
+                                    }
+                                } else {
+                                    return
                                 }
                             }
                         }
-                    } else {
-                        return
                     }
                 }
-                timer.fire()
-                
             }
-
         }.resume()
-        
     }
     
 
