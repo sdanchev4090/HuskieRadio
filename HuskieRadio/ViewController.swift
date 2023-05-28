@@ -73,9 +73,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         playPauseButton.addTarget(self, action: #selector(playPausePressed), for: .touchUpInside)
         playPauseButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
         playPauseButton.tintColor = UIColor(named: "AccentColor")
-//        let rect = CGRect(x: 400, y: 485, width: 140, height: 135)
-//        let circle = UIBezierPath(ovalIn: rect)
-        // circle color = white
         view.addSubview(playPauseButton)
         
         // Recently Played Table View
@@ -99,8 +96,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         URLSession.shared.dataTask(with: URLRequest(url: urlRecentsList)) { data, response, error in
             guard let data = data else { return }
             if let json = try? JSONSerialization.jsonObject(with: data) as? [NSDictionary] {
-//                let songs = json[0] as! [String:Any]
-//                print(songs)
                 for song in json[1...10] {
                     let song_artist = song.object(forKey: "title") as! String
                     let saSplit = song_artist.split(separator: " - ", maxSplits: 1, omittingEmptySubsequences: true)
@@ -113,31 +108,37 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     self.recentsTableView.reloadData()
                 }
             }
-            let url = self.urlSongArt
-            let link = self.urlTitleArtist
+                        
+            var contents : URL = URL(string: "https://artwork.rcast.net/68840")!
+            var contents2 : String = ""
+            var newContents : URL = URL(string: "https://artwork.rcast.net/68840")!
+            var newContents2 : String = ""
+            
             DispatchQueue.global().async {
-                var contents = URL(string: try! String(contentsOf: url))!
-                var contents2 = try! String(contentsOf: link)
+                contents = URL(string: try! String(contentsOf: self.urlSongArt))!
+                contents2 = try! String(contentsOf: self.urlTitleArtist)
                 if let data = try? Data(contentsOf: contents){
                     if let image = UIImage(data: data) {
                         DispatchQueue.main.async {
                             self.songArtImageView.image = image
                             self.songTitle.text = contents2
-                            let time = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { time in
-                                let newContents = URL(string: try! String(contentsOf: url))!
-                                let newContents2 = try! String(contentsOf: link) 
-                                if contents != newContents{
+                            Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { time in
+                                DispatchQueue.global().async {
+                                    newContents = URL(string: try! String(contentsOf: self.urlSongArt))!
+                                    newContents2 = try! String(contentsOf: self.urlTitleArtist)
+                                }
+                                if contents != newContents {
                                     contents = newContents
                                     contents2 = newContents2
                                     DispatchQueue.global().async {
                                         if let data = try? Data(contentsOf: contents) {
-                                        if let image = UIImage(data: data){
-                                            DispatchQueue.main.async {
-                                                self.songArtImageView.image = image
-                                                self.songTitle.text = contents2
+                                            if let image = UIImage(data: data){
+                                                DispatchQueue.main.async {
+                                                    self.songArtImageView.image = image
+                                                    self.songTitle.text = contents2
+                                                }
                                             }
                                         }
-                                    }
                                     }
                                 } else {
                                     return
