@@ -73,8 +73,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         playPauseButton.addTarget(self, action: #selector(playPausePressed), for: .touchUpInside)
         playPauseButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
         playPauseButton.tintColor = UIColor(named: "AccentColor")
-        let rect = CGRect(x: 400, y: 485, width: 140, height: 135)
-        let circle = UIBezierPath(ovalIn: rect)
+//        let rect = CGRect(x: 400, y: 485, width: 140, height: 135)
+//        let circle = UIBezierPath(ovalIn: rect)
         // circle color = white
         view.addSubview(playPauseButton)
         
@@ -133,7 +133,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                         if let data = try? Data(contentsOf: contents) {
                                         if let image = UIImage(data: data){
                                             DispatchQueue.main.async {
-                                                self.testSongArtView.image = image
+                                                self.songArtImageView.image = image
                                                 self.songTitle.text = contents2
                                             }
                                         }
