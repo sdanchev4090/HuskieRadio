@@ -93,62 +93,79 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func getData() {
-        URLSession.shared.dataTask(with: URLRequest(url: urlRecentsList)) { data, response, error in
-            guard let data = data else { return }
-            if let json = try? JSONSerialization.jsonObject(with: data) as? [NSDictionary] {
-                for song in json[1...10] {
-                    let song_artist = song.object(forKey: "title") as! String
-                    let saSplit = song_artist.split(separator: " - ", maxSplits: 1, omittingEmptySubsequences: true)
-                    let title = String(saSplit[0])
-                    let artist = String(saSplit[1])
-                    
-                    self.recentsArray.append(Song(title: title, artist: artist))
-                }
-                DispatchQueue.main.async {
-                    self.recentsTableView.reloadData()
-                }
-            }
-                        
-            var contents : URL = URL(string: "https://artwork.rcast.net/68840")!
-            var contents2 : String = ""
-            var newContents : URL = URL(string: "https://artwork.rcast.net/68840")!
-            var newContents2 : String = ""
+        var contents : URL = URL(string: "https://artwork.rcast.net/68840")!
+        var contents2 : String = ""
+        var newContents : URL = URL(string: "https://artwork.rcast.net/68840")!
+        var newContents2 : String = ""
+        var newRecents : [Song] = []
+        
+        DispatchQueue.global().async {
+            contents = URL(string: try! String(contentsOf: self.urlSongArt))!
+            contents2 = try! String(contentsOf: self.urlTitleArtist)
             
-            DispatchQueue.global().async {
-                contents = URL(string: try! String(contentsOf: self.urlSongArt))!
-                contents2 = try! String(contentsOf: self.urlTitleArtist)
-                if let data = try? Data(contentsOf: contents){
-                    if let image = UIImage(data: data) {
-                        DispatchQueue.main.async {
-                            self.songArtImageView.image = image
-                            self.songTitle.text = contents2
-                            Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { time in
+            URLSession.shared.dataTask(with: URLRequest(url: self.urlRecentsList)) { data, response, error in
+                guard let data = data else { return }
+                if let json = try? JSONSerialization.jsonObject(with: data) as? [NSDictionary] {
+                    for song in json[1...10] {
+                        let song_artist = song.object(forKey: "title") as! String
+                        let saSplit = song_artist.split(separator: " - ", maxSplits: 1, omittingEmptySubsequences: true)
+                        let title = String(saSplit[1])
+                        let artist = String(saSplit[0])
+                        
+                        self.recentsArray.append(Song(title: title, artist: artist))
+                    }
+                }
+            }.resume()
+            
+            if let data = try? Data(contentsOf: contents){
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self.songArtImageView.image = image
+                        self.songTitle.text = contents2
+                        self.recentsTableView.reloadData()
+                        Timer.scheduledTimer(withTimeInterval: 25, repeats: true) { time in
+                            DispatchQueue.global().async {
+                                newContents = URL(string: try! String(contentsOf: self.urlSongArt))!
+                                newContents2 = try! String(contentsOf: self.urlTitleArtist)
+                                
+                                URLSession.shared.dataTask(with: URLRequest(url: self.urlRecentsList)) { data, response, error in
+                                    guard let data = data else { return }
+                                    if let json = try? JSONSerialization.jsonObject(with: data) as? [NSDictionary] {
+                                        for song in json[1...10] {
+                                            let song_artist = song.object(forKey: "title") as! String
+                                            let saSplit = song_artist.split(separator: " - ", maxSplits: 1, omittingEmptySubsequences: true)
+                                            let title = String(saSplit[1])
+                                            let artist = String(saSplit[0])
+                                            
+                                            newRecents.append(Song(title: title, artist: artist))
+                                        }
+                                    }
+                                }.resume()
+                            }
+                            if contents != newContents {
+                                contents = newContents
+                                contents2 = newContents2
+                                self.recentsArray = newRecents
                                 DispatchQueue.global().async {
-                                    newContents = URL(string: try! String(contentsOf: self.urlSongArt))!
-                                    newContents2 = try! String(contentsOf: self.urlTitleArtist)
-                                }
-                                if contents != newContents {
-                                    contents = newContents
-                                    contents2 = newContents2
-                                    DispatchQueue.global().async {
-                                        if let data = try? Data(contentsOf: contents) {
-                                            if let image = UIImage(data: data){
-                                                DispatchQueue.main.async {
-                                                    self.songArtImageView.image = image
-                                                    self.songTitle.text = contents2
-                                                }
+                                    if let data = try? Data(contentsOf: contents) {
+                                        if let image = UIImage(data: data){
+                                            DispatchQueue.main.async {
+                                                self.songArtImageView.image = image
+                                                self.songTitle.text = contents2
+                                                self.recentsTableView.reloadData()
                                             }
                                         }
                                     }
-                                } else {
-                                    return
                                 }
+                            } else {
+                                newRecents.removeAll()
+                                return
                             }
                         }
                     }
                 }
             }
-        }.resume()
+        }
     }
     
 
