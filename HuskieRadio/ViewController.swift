@@ -92,6 +92,14 @@ class ViewController: UIViewController {
         }
     }
     
+    func controlCenterSetup(){
+        let commandCenter = MPRemoteCommandCenter.shared()
+        
+        commandCenter.playCommand.addTarget { <#MPRemoteCommandEvent#> in
+            <#code#>
+        }
+    }
+    
     func getData() {
         var contents : URL = URL(string: "https://artwork.rcast.net/68840")!
         var contents2 : String = ""
