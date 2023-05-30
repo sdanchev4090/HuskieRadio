@@ -10,7 +10,7 @@ import AVKit
 import MediaPlayer
 import WebKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController {
     
     @IBOutlet weak var tabBarBG: UIView!
     @IBOutlet weak var recentsBG: UIView!
@@ -169,20 +169,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recentsArray.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = recentsTableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-        var content = cell.defaultContentConfiguration()
-        content.text = recentsArray[indexPath.row].title
-        content.secondaryText = recentsArray[indexPath.row].artist
-        cell.contentConfiguration = content
-        return cell
-    }
-    
-    
     
     @objc func playPausePressed() {
         if playPauseButton.currentBackgroundImage != UIImage(systemName: "play.circle.fill") {
@@ -198,7 +184,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             playPauseButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
         }
     }
-    
-
 }
 
+
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let url = URL(string: "https://google.com/search?q=\(recentsArray[indexPath.row].title) - \(recentsArray[indexPath.row].artist)") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return recentsArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = recentsTableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+        var content = cell.defaultContentConfiguration()
+        content.text = recentsArray[indexPath.row].title
+        content.secondaryText = recentsArray[indexPath.row].artist
+        cell.contentConfiguration = content
+        cell.selectionStyle = .none
+        return cell
+    }
+}
