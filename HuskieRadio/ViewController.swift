@@ -42,6 +42,7 @@ class ViewController: UIViewController {
         audioPlayer()
         setup()
         getData()
+        controlCenterSetup()
         
         recentsTableView.delegate = self
         recentsTableView.dataSource = self
@@ -93,10 +94,23 @@ class ViewController: UIViewController {
     }
     
     func controlCenterSetup(){
+        UIApplication.shared.beginReceivingRemoteControlEvents()
         let commandCenter = MPRemoteCommandCenter.shared()
+        commandCenter.pauseCommand.isEnabled = true
         
-        commandCenter.playCommand.addTarget { <#MPRemoteCommandEvent#> in
-            <#code#>
+        commandCenter.playCommand.addTarget { event1 in
+            if self.player?.volume == 1 {
+                self.player?.volume = 0
+                return .success
+            }
+            return.commandFailed
+        }
+        commandCenter.pauseCommand.addTarget { event2 in
+            if self.player?.volume == 0 {
+                self.player?.volume = 1
+                return.success
+            }
+            return.commandFailed
         }
     }
     
