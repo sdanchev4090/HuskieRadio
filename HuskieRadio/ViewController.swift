@@ -24,8 +24,9 @@ class ViewController: UIViewController {
     let urlTitleArtist = URL(string: "https://status.rcast.net/68840")!
     let urlRecentsList = URL(string: "https://playlist.rcast.net/68840")!
     
-    var currentSong = ""
-    var recentsArray : [Song] = []
+    var SongArt : URL = URL(string: "https://artwork.rcast.net/68840")!
+    var TitleArtist : String = ""
+    var RecentsArray : [Song] = []
     
     var player: AVPlayer?
     
@@ -114,53 +115,61 @@ class ViewController: UIViewController {
         }
     }
     
+    
+    
     func getData() {
-        var contents : URL = URL(string: "https://artwork.rcast.net/68840")!
-        var contents2 : String = ""
-        var newContents : URL = URL(string: "https://artwork.rcast.net/68840")!
-        var newContents2 : String = ""
+        
+        var newSongArt : URL = URL(string: "https://artwork.rcast.net/68840")!
+        var newTitleArtist : String = ""
         var newRecents : [Song] = []
         
         DispatchQueue.global().async {
-            contents = URL(string: try! String(contentsOf: self.urlSongArt))!
-            contents2 = try! String(contentsOf: self.urlTitleArtist)
+            self.SongArt = URL(string: try! String(contentsOf: self.urlSongArt))!
+            self.TitleArtist = try! String(contentsOf: self.urlTitleArtist)
             
             URLSession.shared.dataTask(with: URLRequest(url: self.urlRecentsList)) { data, response, error in
                 guard let data = data else { return }
                 if let json = try? JSONSerialization.jsonObject(with: data) as? [NSDictionary] {
+                    self.RecentsArray.removeAll()
                     for song in json[1...10] {
                         let song_artist = song.object(forKey: "title") as! String
                         let saSplit = song_artist.split(separator: " - ", maxSplits: 1, omittingEmptySubsequences: true)
-                        let title = String(saSplit[1])
+                        var title = String(saSplit[1])
+                        title.removeLast(7)
                         let artist = String(saSplit[0])
                         
-                        self.recentsArray.append(Song(title: title, artist: artist))
-                        
-                        // var nowPlayingInfo = [String: Any]()
-                        // nowPlayingInfo[MPMediaItemPropertyTitle] = title
-
+                        self.RecentsArray.append(Song(title: title, artist: artist))
                     }
                 }
             }.resume()
             
-            if let data = try? Data(contentsOf: contents){
+            
+// Set new data
+//---------------------------------------------//
+            
+            if let data = try? Data(contentsOf: self.SongArt){
                 if let image = UIImage(data: data) {
                     DispatchQueue.main.async {
                         self.songArtImageView.image = image
-                        self.songTitle.text = contents2
+                        self.songTitle.text = self.TitleArtist
                         self.recentsTableView.reloadData()
-                        Timer.scheduledTimer(withTimeInterval: 25, repeats: true) { time in
+                        
+//---------------------------------------------//
+                        
+                        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { time in
                             DispatchQueue.global().async {
-                                newContents = URL(string: try! String(contentsOf: self.urlSongArt))!
-                                newContents2 = try! String(contentsOf: self.urlTitleArtist)
+                                newSongArt = URL(string: try! String(contentsOf: self.urlSongArt))!
+                                newTitleArtist = try! String(contentsOf: self.urlTitleArtist)
                                 
                                 URLSession.shared.dataTask(with: URLRequest(url: self.urlRecentsList)) { data, response, error in
                                     guard let data = data else { return }
                                     if let json = try? JSONSerialization.jsonObject(with: data) as? [NSDictionary] {
+                                        newRecents.removeAll()
                                         for song in json[1...10] {
                                             let song_artist = song.object(forKey: "title") as! String
                                             let saSplit = song_artist.split(separator: " - ", maxSplits: 1, omittingEmptySubsequences: true)
-                                            let title = String(saSplit[1])
+                                            var title = String(saSplit[1])
+                                            title.removeLast(7)
                                             let artist = String(saSplit[0])
                                             
                                             newRecents.append(Song(title: title, artist: artist))
@@ -168,16 +177,20 @@ class ViewController: UIViewController {
                                     }
                                 }.resume()
                             }
-                            if contents != newContents {
-                                contents = newContents
-                                contents2 = newContents2
-                                self.recentsArray = newRecents
+                            
+// Compare & Set new data
+//---------------------------------------------//
+                            
+                            if self.SongArt != newSongArt {
+                                self.SongArt = newSongArt
+                                self.TitleArtist = newTitleArtist
+                                self.RecentsArray = newRecents
                                 DispatchQueue.global().async {
-                                    if let data = try? Data(contentsOf: contents) {
+                                    if let data = try? Data(contentsOf: self.SongArt) {
                                         if let image = UIImage(data: data){
                                             DispatchQueue.main.async {
                                                 self.songArtImageView.image = image
-                                                self.songTitle.text = contents2
+                                                self.songTitle.text = self.TitleArtist
                                                 self.recentsTableView.reloadData()
                                             }
                                         }
@@ -187,6 +200,9 @@ class ViewController: UIViewController {
                                 newRecents.removeAll()
                                 return
                             }
+                            
+//---------------------------------------------//
+                            
                         }
                     }
                 }
@@ -216,20 +232,20 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let url = URL(string: "https://google.com/search?q=\(recentsArray[indexPath.row].title) - \(recentsArray[indexPath.row].artist)") {
+        if let url = URL(string: "https://google.com/search?q=\(RecentsArray[indexPath.row].title) - \(RecentsArray[indexPath.row].artist)") {
             UIApplication.shared.open(url)
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recentsArray.count
+        return RecentsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = recentsTableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
         var content = cell.defaultContentConfiguration()
-        content.text = recentsArray[indexPath.row].title
-        content.secondaryText = recentsArray[indexPath.row].artist
+        content.text = RecentsArray[indexPath.row].title
+        content.secondaryText = RecentsArray[indexPath.row].artist
         cell.contentConfiguration = content
         cell.selectionStyle = .none
         return cell
