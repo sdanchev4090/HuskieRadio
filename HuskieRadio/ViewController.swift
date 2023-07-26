@@ -123,6 +123,9 @@ class ViewController: UIViewController {
         var newTitleArtist : String = ""
         var newRecents : [Song] = []
         
+//---------------------------------------------//
+// Pulling data
+        
         DispatchQueue.global().async {
             self.SongArt = URL(string: try! String(contentsOf: self.urlSongArt))!
             self.TitleArtist = try! String(contentsOf: self.urlTitleArtist)
@@ -134,8 +137,9 @@ class ViewController: UIViewController {
                     for song in json[1...10] {
                         let song_artist = song.object(forKey: "title") as! String
                         let saSplit = song_artist.split(separator: " - ", maxSplits: 1, omittingEmptySubsequences: true)
-                        var title = String(saSplit[1])
-                        title.removeLast(7)
+                        let title = String(saSplit[1])
+//                        title.removeLast(7)
+                        // If title contains "[xxxx]" at end, then removeLast(7)
                         let artist = String(saSplit[0])
                         
                         self.RecentsArray.append(Song(title: title, artist: artist))
@@ -144,8 +148,9 @@ class ViewController: UIViewController {
             }.resume()
             
             
-// Set new data
+
 //---------------------------------------------//
+// Set new data
             
             if let data = try? Data(contentsOf: self.SongArt){
                 if let image = UIImage(data: data) {
@@ -168,8 +173,10 @@ class ViewController: UIViewController {
                                         for song in json[1...10] {
                                             let song_artist = song.object(forKey: "title") as! String
                                             let saSplit = song_artist.split(separator: " - ", maxSplits: 1, omittingEmptySubsequences: true)
-                                            var title = String(saSplit[1])
-                                            title.removeLast(7)
+                                            let title = String(saSplit[1])
+//                                            title.removeLast(7)
+                                            // If title contains "[xxxx]" at end, then removeLast(7)
+
                                             let artist = String(saSplit[0])
                                             
                                             newRecents.append(Song(title: title, artist: artist))
@@ -178,8 +185,8 @@ class ViewController: UIViewController {
                                 }.resume()
                             }
                             
-// Compare & Set new data
 //---------------------------------------------//
+// Compare & Set new data
                             
                             if self.SongArt != newSongArt {
                                 self.SongArt = newSongArt
@@ -196,6 +203,7 @@ class ViewController: UIViewController {
                                         }
                                     }
                                 }
+                                
                             } else {
                                 newRecents.removeAll()
                                 return
