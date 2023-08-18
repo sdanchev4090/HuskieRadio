@@ -137,9 +137,10 @@ class ViewController: UIViewController {
                     for song in json[1...10] {
                         let song_artist = song.object(forKey: "title") as! String
                         let saSplit = song_artist.split(separator: " - ", maxSplits: 1, omittingEmptySubsequences: true)
-                        let title = String(saSplit[1])
-//                        title.removeLast(7)
-                        // If title contains "[xxxx]" at end, then removeLast(7)
+                        var title = String(saSplit[1])
+                        if title[title.index(title.endIndex, offsetBy: -1)] == Character("]") {
+                            title.removeLast(7)
+                        }
                         let artist = String(saSplit[0])
                         
                         self.RecentsArray.append(Song(title: title, artist: artist))
@@ -173,10 +174,10 @@ class ViewController: UIViewController {
                                         for song in json[1...10] {
                                             let song_artist = song.object(forKey: "title") as! String
                                             let saSplit = song_artist.split(separator: " - ", maxSplits: 1, omittingEmptySubsequences: true)
-                                            let title = String(saSplit[1])
-//                                            title.removeLast(7)
-                                            // If title contains "[xxxx]" at end, then removeLast(7)
-
+                                            var title = String(saSplit[1])
+                                            if title[title.index(title.endIndex, offsetBy: -1)] == Character("]") {
+                                                title.removeLast(7)
+                                            }
                                             let artist = String(saSplit[0])
                                             
                                             newRecents.append(Song(title: title, artist: artist))
