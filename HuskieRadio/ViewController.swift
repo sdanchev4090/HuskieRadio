@@ -9,8 +9,9 @@ import UIKit
 import AVKit
 import MediaPlayer
 import WebKit
+import SafariServices
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tabBarBG: UIView!
     @IBOutlet weak var recentsBG: UIView!
@@ -30,7 +31,7 @@ class ViewController: UIViewController {
     
     var player: AVPlayer?
     
-    //---------------------------------------------//
+//---------------------------------------------//
         
     var songTitle = UILabel()
     var playPauseButton = UIButton()
@@ -94,7 +95,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func controlCenterSetup(){
+    func controlCenterSetup() {
         UIApplication.shared.beginReceivingRemoteControlEvents()
         let notifCenter = MPRemoteCommandCenter.shared()
         notifCenter.pauseCommand.isEnabled = true
@@ -116,6 +117,37 @@ class ViewController: UIViewController {
     }
     
     
+//---------------------------------------------//
+// TableView
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("\(indexPath.row)")
+        let webtitle = RecentsArray[indexPath.row].title
+        let webartist = RecentsArray[indexPath.row].artist
+        
+        if let url = URL(string: "https://google.com/search?q=\(webtitle) - \(webartist)") {
+            let safariController = SFSafariViewController(url: url)
+            present(safariController, animated: true, completion: nil)
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return RecentsArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = recentsTableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
+        var content = cell.defaultContentConfiguration()
+        content.text = RecentsArray[indexPath.row].title
+        content.secondaryText = RecentsArray[indexPath.row].artist
+        cell.contentConfiguration = content
+        cell.selectionStyle = .none
+        return cell
+    }
+    
+//---------------------------------------------//
+//---------------------------------------------//
     
     func getData() {
         
@@ -129,6 +161,9 @@ class ViewController: UIViewController {
         DispatchQueue.global().async {
             self.SongArt = URL(string: try! String(contentsOf: self.urlSongArt))!
             self.TitleArtist = try! String(contentsOf: self.urlTitleArtist)
+            if self.TitleArtist[self.TitleArtist.index(self.TitleArtist.endIndex, offsetBy: -1)] == Character("]") {
+                self.TitleArtist.removeLast(7)
+            }
             
             URLSession.shared.dataTask(with: URLRequest(url: self.urlRecentsList)) { data, response, error in
                 guard let data = data else { return }
@@ -148,8 +183,6 @@ class ViewController: UIViewController {
                 }
             }.resume()
             
-            
-
 //---------------------------------------------//
 // Set new data
             
@@ -166,6 +199,9 @@ class ViewController: UIViewController {
                             DispatchQueue.global().async {
                                 newSongArt = URL(string: try! String(contentsOf: self.urlSongArt))!
                                 newTitleArtist = try! String(contentsOf: self.urlTitleArtist)
+                                if newTitleArtist[newTitleArtist.index(newTitleArtist.endIndex, offsetBy: -1)] == Character("]") {
+                                    newTitleArtist.removeLast(7)
+                                }
                                 
                                 URLSession.shared.dataTask(with: URLRequest(url: self.urlRecentsList)) { data, response, error in
                                     guard let data = data else { return }
@@ -189,7 +225,7 @@ class ViewController: UIViewController {
 //---------------------------------------------//
 // Compare & Set new data
                             
-                            if self.SongArt != newSongArt {
+                            if self.RecentsArray != newRecents {
                                 self.SongArt = newSongArt
                                 self.TitleArtist = newTitleArtist
                                 self.RecentsArray = newRecents
@@ -238,25 +274,7 @@ class ViewController: UIViewController {
 }
 
 
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let url = URL(string: "https://google.com/search?q=\(RecentsArray[indexPath.row].title) - \(RecentsArray[indexPath.row].artist)") {
-            UIApplication.shared.open(url)
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return RecentsArray.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = recentsTableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-        var content = cell.defaultContentConfiguration()
-        content.text = RecentsArray[indexPath.row].title
-        content.secondaryText = RecentsArray[indexPath.row].artist
-        cell.contentConfiguration = content
-        cell.selectionStyle = .none
-        return cell
-    }
-}
+//extension ViewController: UITableViewDataSource, UITableViewDelegate {
+//
+//
+//}

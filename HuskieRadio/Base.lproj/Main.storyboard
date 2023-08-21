@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad10_2" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -39,12 +37,12 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="NEQ-0b-jCs">
-                                        <rect key="frame" x="31" y="77" width="424" height="703"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="NEQ-0b-jCs">
+                                        <rect key="frame" x="31" y="77" width="424" height="701"/>
                                         <color key="sectionIndexColor" name="Text"/>
                                         <color key="sectionIndexBackgroundColor" name="Background2"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myCell" rowHeight="80" id="ly3-EU-BXC">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myCell" rowHeight="80" id="ly3-EU-BXC">
                                                 <rect key="frame" x="0.0" y="50" width="424" height="80"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ly3-EU-BXC" id="E9c-Sb-hFr">
@@ -57,7 +55,7 @@
                                 </subviews>
                                 <color key="backgroundColor" name="Background"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="NEQ-0b-jCs" secondAttribute="bottom" constant="30" id="Otp-8X-ujT"/>
+                                    <constraint firstAttribute="bottom" secondItem="NEQ-0b-jCs" secondAttribute="bottom" constant="32" id="Otp-8X-ujT"/>
                                     <constraint firstItem="mYa-BN-Usb" firstAttribute="leading" secondItem="NEQ-0b-jCs" secondAttribute="leading" id="gGA-J9-e9I"/>
                                     <constraint firstItem="NEQ-0b-jCs" firstAttribute="top" secondItem="mYa-BN-Usb" secondAttribute="bottom" constant="11" id="gpH-ou-aX6"/>
                                     <constraint firstItem="mYa-BN-Usb" firstAttribute="centerX" secondItem="NSA-F9-U5U" secondAttribute="centerX" id="iWQ-4X-bcf"/>
@@ -156,22 +154,40 @@
             <point key="canvasLocation" x="-64.444444444444443" y="-622.22222222222217"/>
         </scene>
         <!--Schedule-->
-        <scene sceneID="rsB-4n-qso">
+        <scene sceneID="VI7-i8-y9B">
             <objects>
-                <viewController id="3N7-5F-Stw" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="mrO-wG-09F">
+                <viewController title="Schedule" id="ooc-5N-6fK" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GdF-23-MkB">
                         <rect key="frame" x="0.0" y="0.0" width="1080" height="810"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="aQr-ws-n5J"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Schedule" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mok-eB-AH3">
+                                <rect key="frame" x="49" y="49" width="217" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fpG-fN-DUc">
+                                <rect key="frame" x="594" y="0.0" width="486" height="810"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="US_curved.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="jwJ-gw-0qR">
+                                        <rect key="frame" x="41" y="58" width="404" height="248"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" name="Background2"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" name="Background"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="o1v-4e-UDb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Schedule" id="vGQ-5d-6kK">
-                        <imageReference key="image" image="calendar" catalog="system" symbolScale="medium"/>
-                    </tabBarItem>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JUu-bv-BRm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qoG-Ya-ioT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="674" y="-622"/>
+            <point key="canvasLocation" x="673.88888888888891" y="-622.22222222222217"/>
         </scene>
         <!--Settings-->
         <scene sceneID="NrP-2n-d4f">
@@ -191,6 +207,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="US_curved.jpg" width="388" height="241"/>
         <image name="calendar" catalog="system" width="128" height="107"/>
         <image name="gearshape.2.fill" catalog="system" width="128" height="101"/>
         <image name="info.circle" catalog="system" width="128" height="123"/>
