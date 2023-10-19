@@ -35,6 +35,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     var songTitle = UILabel()
     var playPauseButton = UIButton()
+    var playPauseBG = UIView()
     var recentsButton = UIButton()
     var songArtImageView = UIImageView()
 
@@ -72,6 +73,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         view.addSubview(songArtImageView)
         
         // Play/Pause
+        playPauseBG.frame = CGRect(x: 411, y: 495, width: 118, height: 115)
+        playPauseBG.backgroundColor = .white
+        playPauseBG.tintColor = .white
+        playPauseBG.layer.cornerRadius = playPauseBG.layer.bounds.width / 2
+        playPauseBG.layer.masksToBounds = true
+        view.addSubview(playPauseBG)
+        
         playPauseButton = UIButton(frame: CGRect(x: 400, y: 485, width: 140, height: 135))
         playPauseButton.addTarget(self, action: #selector(playPausePressed), for: .touchUpInside)
         playPauseButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
@@ -153,6 +161,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         var newSongArt : URL = URL(string: "https://artwork.rcast.net/68840")!
         var newTitleArtist : String = ""
+        var tempRecents : [Song] = RecentsArray
         var newRecents : [Song] = []
         
 //---------------------------------------------//
@@ -169,6 +178,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 guard let data = data else { return }
                 if let json = try? JSONSerialization.jsonObject(with: data) as? [NSDictionary] {
                     self.RecentsArray.removeAll()
+                    tempRecents.removeAll()
                     for song in json[1...10] {
                         let song_artist = song.object(forKey: "title") as! String
                         let saSplit = song_artist.split(separator: " - ", maxSplits: 1, omittingEmptySubsequences: true)
@@ -186,16 +196,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 //---------------------------------------------//
 // Set new data
             
-            if let data = try? Data(contentsOf: self.SongArt){
+            if let data = try? Data(contentsOf: self.SongArt) {
                 if let image = UIImage(data: data) {
                     DispatchQueue.main.async {
+                        tempRecents = self.RecentsArray
                         self.songArtImageView.image = image
                         self.songTitle.text = self.TitleArtist
                         self.recentsTableView.reloadData()
                         
 //---------------------------------------------//
                         
-                        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { time in
+                        Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { time in
                             DispatchQueue.global().async {
                                 newSongArt = URL(string: try! String(contentsOf: self.urlSongArt))!
                                 newTitleArtist = try! String(contentsOf: self.urlTitleArtist)
@@ -225,7 +236,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 //---------------------------------------------//
 // Compare & Set new data
                             
-                            if self.RecentsArray != newRecents {
+                            if tempRecents != newRecents {
                                 self.SongArt = newSongArt
                                 self.TitleArtist = newTitleArtist
                                 self.RecentsArray = newRecents
