@@ -128,6 +128,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 //---------------------------------------------//
 // TableView
     
+    // Touch Table to Search
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(indexPath.row)")
         let webtitle = RecentsArray[indexPath.row].title
@@ -147,8 +148,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = recentsTableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
         var content = cell.defaultContentConfiguration()
+        
         content.text = RecentsArray[indexPath.row].title
+        // color = UIColor(named: "Text")
+        
         content.secondaryText = RecentsArray[indexPath.row].artist
+        // color = UIColor(named: "SecondaryText")
+        
         cell.contentConfiguration = content
         cell.selectionStyle = .none
         return cell
