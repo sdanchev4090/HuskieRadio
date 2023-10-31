@@ -11,6 +11,14 @@ import MediaPlayer
 import WebKit
 import SafariServices
 
+
+class TitleArtistTableViewCell: UITableViewCell {
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var artistLabel: UILabel!
+    @IBOutlet weak var numberLabel: UILabel!
+}
+
+
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tabBarBG: UIView!
@@ -146,17 +154,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = recentsTableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-        var content = cell.defaultContentConfiguration()
+        let cell = recentsTableView.dequeueReusableCell(withIdentifier: "TitleArtistCell", for: indexPath) as! TitleArtistTableViewCell
         
-        content.text = RecentsArray[indexPath.row].title
-        // color = UIColor(named: "Text")
-        
-        content.secondaryText = RecentsArray[indexPath.row].artist
-        // color = UIColor(named: "SecondaryText")
-        
-        cell.contentConfiguration = content
-        cell.selectionStyle = .none
+        cell.artistLabel.text = RecentsArray[indexPath.row].artist
+        cell.titleLabel.text = RecentsArray[indexPath.row].title
         return cell
     }
     
