@@ -138,9 +138,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // Touch Table to Search
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("\(indexPath.row)")
+        
+        // add Try Catch statement to handle "Index out of range"
+        
         let webtitle = RecentsArray[indexPath.row].title
         let webartist = RecentsArray[indexPath.row].artist
+        print("\(indexPath.row)")
         
         if let url = URL(string: "https://google.com/search?q=\(webtitle) - \(webartist)") {
             let safariController = SFSafariViewController(url: url)
@@ -158,6 +161,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         cell.artistLabel.text = RecentsArray[indexPath.row].artist
         cell.titleLabel.text = RecentsArray[indexPath.row].title
+        switch indexPath.row {
+        case 0:
+            cell.numberLabel.text = "1"
+        case 1:
+            cell.numberLabel.text = "2"
+        case 2:
+            cell.numberLabel.text = "3"
+        case 3:
+            cell.numberLabel.text = "4"
+        case 4:
+            cell.numberLabel.text = "5"
+        case 5:
+            cell.numberLabel.text = "6"
+        case 6:
+            cell.numberLabel.text = "7"
+        case 7:
+            cell.numberLabel.text = "8"
+        case 8:
+            cell.numberLabel.text = "9"
+        case 9:
+            cell.numberLabel.text = "10"
+        default:
+            cell.numberLabel.text =  "#"
+        }
         return cell
     }
     
@@ -215,6 +242,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                         
                         Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { time in
                             DispatchQueue.global().async {
+                                
+                                // add Try Catch statement to handle "Index out of range"
+                                
                                 newSongArt = URL(string: try! String(contentsOf: self.urlSongArt))!
                                 newTitleArtist = try! String(contentsOf: self.urlTitleArtist)
                                 if newTitleArtist[newTitleArtist.index(newTitleArtist.endIndex, offsetBy: -1)] == Character("]") {
