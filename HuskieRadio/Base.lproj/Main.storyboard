@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="ipad10_2" orientation="landscape" layout="fullscreen" appearance="light"/>
+    <device id="ipad10_2" orientation="landscape" layout="fullscreen" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="49" y="49" width="145" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="Text"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NSA-F9-U5U">
@@ -35,13 +35,13 @@
                                             <constraint firstAttribute="height" constant="40" id="vCz-yp-Vmy"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="Text"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="70" estimatedRowHeight="1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="NEQ-0b-jCs">
                                         <rect key="frame" x="31" y="79" width="424" height="699"/>
+                                        <color key="backgroundColor" red="0.19215685129999999" green="0.19215685129999999" blue="0.19215685129999999" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="sectionIndexColor" name="Text"/>
-                                        <color key="sectionIndexBackgroundColor" name="CellBackground"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TitleArtistCell" rowHeight="80" id="ly3-EU-BXC" customClass="TitleArtistTableViewCell" customModule="HuskieRadio" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="50" width="424" height="80"/>
@@ -54,7 +54,7 @@
                                                             <rect key="frame" x="15" y="7.5" width="331.5" height="34"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                            <color key="textColor" name="Text"/>
+                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFQ-Pe-LNl" userLabel="Subtitle">
@@ -73,8 +73,7 @@
                                                         </label>
                                                     </subviews>
                                                 </tableViewCellContentView>
-                                                <color key="backgroundColor" name="CellBackground"/>
-                                                <color key="tintColor" name="CellBackground"/>
+                                                <color key="backgroundColor" name="SecBackground"/>
                                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <connections>
                                                     <outlet property="artistLabel" destination="AFQ-Pe-LNl" id="Q7T-k4-MKr"/>
@@ -86,7 +85,6 @@
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" name="SecBackground"/>
-                                <color key="tintColor" name="SecBackground"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="NEQ-0b-jCs" secondAttribute="bottom" constant="32" id="Otp-8X-ujT"/>
                                     <constraint firstItem="mYa-BN-Usb" firstAttribute="leading" secondItem="NEQ-0b-jCs" secondAttribute="leading" id="gGA-J9-e9I"/>
@@ -107,33 +105,33 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SJe-Qp-gnK">
-                                <rect key="frame" x="53" y="718.5" width="488" height="91.5"/>
+                                <rect key="frame" x="53" y="716" width="488" height="94"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="39" translatesAutoresizingMaskIntoConstraints="NO" id="X8t-OE-knF">
-                                        <rect key="frame" x="23" y="22" width="442.5" height="47.5"/>
+                                        <rect key="frame" x="23" y="22" width="442.5" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JyA-C1-qVy">
-                                                <rect key="frame" x="0.0" y="0.0" width="121.5" height="47.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="121.5" height="50"/>
                                                 <color key="tintColor" name="AccentColor"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="radio.fill" catalog="system" imagePlacement="leading" title="Player" imagePadding="9">
-                                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
                                                 </buttonConfiguration>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7O-eQ-sdH">
-                                                <rect key="frame" x="160.5" y="0.0" width="121.5" height="47.5"/>
+                                                <rect key="frame" x="160.5" y="0.0" width="121.5" height="50"/>
                                                 <color key="tintColor" name="Text"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="calendar" catalog="system" imagePlacement="leading" title="Coming Soon" imagePadding="9">
-                                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
                                                 </buttonConfiguration>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVP-8l-qui">
-                                                <rect key="frame" x="321" y="0.0" width="121.5" height="47.5"/>
+                                                <rect key="frame" x="321" y="0.0" width="121.5" height="50"/>
                                                 <color key="tintColor" name="Text"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="info.circle" catalog="system" imagePlacement="leading" title="Coming Soon" imagePadding="9">
-                                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
                                                 </buttonConfiguration>
                                             </button>
                                         </subviews>
@@ -232,15 +230,12 @@
         <image name="info.circle" catalog="system" width="128" height="123"/>
         <image name="radio.fill" catalog="system" width="128" height="115"/>
         <namedColor name="AccentColor">
-            <color red="0.9882352941176471" green="0.40392156862745099" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.9882352941176471" green="0.40392156862745099" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Background">
             <color red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Background2">
-            <color red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="CellBackground">
             <color red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="MainBackground">

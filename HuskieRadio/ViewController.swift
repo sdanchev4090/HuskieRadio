@@ -82,7 +82,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         // Play/Pause
         playPauseBG.frame = CGRect(x: 411, y: 495, width: 118, height: 115)
-        playPauseBG.backgroundColor = UIColor(named: "MainBackground")
+        playPauseBG.backgroundColor = UIColor(named: "HRWhite")
         playPauseBG.tintColor = .white
         playPauseBG.layer.cornerRadius = playPauseBG.layer.bounds.width / 2
         playPauseBG.layer.masksToBounds = true
