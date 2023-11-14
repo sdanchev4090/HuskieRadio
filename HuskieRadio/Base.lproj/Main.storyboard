@@ -105,10 +105,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SJe-Qp-gnK">
-                                <rect key="frame" x="53" y="716" width="488" height="94"/>
+                                <rect key="frame" x="53" y="732" width="488" height="78"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="39" translatesAutoresizingMaskIntoConstraints="NO" id="X8t-OE-knF">
-                                        <rect key="frame" x="23" y="22" width="442.5" height="50"/>
+                                        <rect key="frame" x="23" y="14" width="442.5" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JyA-C1-qVy">
                                                 <rect key="frame" x="0.0" y="0.0" width="121.5" height="50"/>
@@ -143,8 +143,8 @@
                                 <color key="backgroundColor" name="SecBackground"/>
                                 <constraints>
                                     <constraint firstItem="X8t-OE-knF" firstAttribute="leading" secondItem="SJe-Qp-gnK" secondAttribute="leading" constant="23" id="2kr-Cw-QA2"/>
-                                    <constraint firstItem="X8t-OE-knF" firstAttribute="top" secondItem="SJe-Qp-gnK" secondAttribute="top" constant="22" id="Gfb-qR-Vt6"/>
-                                    <constraint firstAttribute="bottom" secondItem="X8t-OE-knF" secondAttribute="bottom" constant="22" id="R9B-4k-UcX"/>
+                                    <constraint firstItem="X8t-OE-knF" firstAttribute="top" secondItem="SJe-Qp-gnK" secondAttribute="top" constant="14" id="Gfb-qR-Vt6"/>
+                                    <constraint firstAttribute="bottom" secondItem="X8t-OE-knF" secondAttribute="bottom" constant="14" id="R9B-4k-UcX"/>
                                     <constraint firstAttribute="trailing" secondItem="X8t-OE-knF" secondAttribute="trailing" constant="22.5" id="nv0-mq-OxB"/>
                                 </constraints>
                             </view>
