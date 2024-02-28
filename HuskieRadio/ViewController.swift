@@ -59,7 +59,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         recentsTableView.dataSource = self
     }
     
-        
+
+//---------------------------------------------//
+// MARK: - UI Setup
+    
     func setup() {
         // TabBar
         tabBarBG.layer.cornerRadius = 30
@@ -99,6 +102,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         recentsTableView.layer.masksToBounds = true
     }
     
+//---------------------------------------------//
+// MARK: - Audio
+    
     func audioPlayer() {
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
@@ -110,6 +116,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             print("Error Occurred")
         }
     }
+    
     
     func controlCenterSetup() {
         UIApplication.shared.beginReceivingRemoteControlEvents()
@@ -134,7 +141,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
 //---------------------------------------------//
-// TableView
+// MARK: - TableView
     
     // Touch Table to Search
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -190,6 +197,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
 //---------------------------------------------//
 //---------------------------------------------//
+// MARK: - getData
     
     func getData() {
         
