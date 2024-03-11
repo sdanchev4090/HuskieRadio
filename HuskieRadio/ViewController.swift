@@ -41,12 +41,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
 //---------------------------------------------//
         
-    var songTitle = UILabel()
+    //var songTitle = UILabel()
+    @IBOutlet weak var songTitle: UILabel!
+    
     var playPauseButton = UIButton()
     var playPauseBG = UIView()
     var recentsButton = UIButton()
-    var songArtImageView = UIImageView()
-
+    //var songArtImageView = UIImageView()
+    @IBOutlet weak var songArtImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -73,15 +76,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         recentsBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         
         // Song Name
-        songTitle.frame = CGRect(x: 92, y: 636, width: 410, height: 29)
-        songTitle.font = .boldSystemFont(ofSize: 24)
-        view.addSubview(songTitle)
+//        songTitle.frame = CGRect(x: 92, y: 636, width: 410, height: 29)
+//        songTitle.font = .boldSystemFont(ofSize: 24)
+//        view.addSubview(songTitle)
        
         // Song Art Image View
-        songArtImageView.frame = CGRect(x: 82, y: 165, width: 430, height: 430)
+//        songArtImageView.frame = CGRect(x: 82, y: 165, width: 430, height: 430)
         songArtImageView.layer.cornerRadius = 25
         songArtImageView.layer.masksToBounds = true
-        view.addSubview(songArtImageView)
+//        view.addSubview(songArtImageView)
         
         // Play/Pause
         playPauseBG.frame = CGRect(x: 411, y: 495, width: 118, height: 115)
