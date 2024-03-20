@@ -44,9 +44,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //var songTitle = UILabel()
     @IBOutlet weak var songTitle: UILabel!
     
-    var playPauseButton = UIButton()
+    //var playPauseButton = UIButton()
+    @IBOutlet weak var playPauseButton: UIButton!
+    
     var playPauseBG = UIView()
     var recentsButton = UIButton()
+    
     //var songArtImageView = UIImageView()
     @IBOutlet weak var songArtImageView: UIImageView!
     
@@ -87,18 +90,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 //        view.addSubview(songArtImageView)
         
         // Play/Pause
-        playPauseBG.frame = CGRect(x: 411, y: 495, width: 118, height: 115)
-        playPauseBG.backgroundColor = UIColor(named: "HRWhite")
-        playPauseBG.tintColor = .white
-        playPauseBG.layer.cornerRadius = playPauseBG.layer.bounds.width / 2
-        playPauseBG.layer.masksToBounds = true
-        view.addSubview(playPauseBG)
+//        playPauseBG.frame = CGRect(x: 411, y: 495, width: 118, height: 115)
+//        playPauseBG.backgroundColor = UIColor(named: "HRWhite")
+//        playPauseBG.tintColor = .white
+//        playPauseBG.layer.cornerRadius = playPauseBG.layer.bounds.width / 2
+//        playPauseBG.layer.masksToBounds = true
+//        view.addSubview(playPauseBG)
         
-        playPauseButton = UIButton(frame: CGRect(x: 400, y: 485, width: 140, height: 135))
+//        playPauseButton = UIButton(frame: CGRect(x: 400, y: 485, width: 140, height: 135))
         playPauseButton.addTarget(self, action: #selector(playPausePressed), for: .touchUpInside)
-        playPauseButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
-        playPauseButton.tintColor = UIColor(named: "AccentColor")
-        view.addSubview(playPauseButton)
+//        playPauseButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
+//        playPauseButton.tintColor = UIColor(named: "AccentColor")
+//        view.addSubview(playPauseButton)
         
         // Recently Played Table View
         recentsTableView.layer.cornerRadius = 25
@@ -315,21 +318,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
 
-    
-    @objc func playPausePressed() {
-        if playPauseButton.currentBackgroundImage != UIImage(systemName: "play.circle.fill") {
+    //@objc func playPausePressed() {}
+    @IBAction func playPausePressed(_ sender: UIButton) {
+        if playPauseButton.currentImage != UIImage(systemName: "play.circle.fill") {
             // "Pause"
             player?.volume = 0
             // Play Icon
-            playPauseButton.setBackgroundImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+            playPauseButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
             
         } else {
             // "Play"
             player?.volume = 1
             // Pause Icon
-            playPauseButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
+            playPauseButton.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
         }
     }
+    
 }
 
 
