@@ -19,8 +19,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="1080" height="810"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LBg-Ur-Vrf">
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gg2-vI-beE">
+                                <rect key="frame" x="0.0" y="0.0" width="1080" height="810"/>
+                            </stackView>
+                            <view contentMode="scaleToFill" id="LBg-Ur-Vrf" userLabel="Player Items">
                                 <rect key="frame" x="0.0" y="0.0" width="594" height="810"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTD-3X-cCQ">
                                         <rect key="frame" x="49" y="44" width="144.5" height="60"/>
@@ -129,6 +133,7 @@
                                     <constraint firstItem="fpT-XV-cx0" firstAttribute="trailing" secondItem="w9P-Qz-HP4" secondAttribute="trailing" constant="-15" id="MoO-LH-TPE"/>
                                     <constraint firstItem="fpT-XV-cx0" firstAttribute="leading" secondItem="w9P-Qz-HP4" secondAttribute="leading" constant="15" id="RGa-cq-g1k"/>
                                     <constraint firstItem="iML-db-pPI" firstAttribute="top" secondItem="w9P-Qz-HP4" secondAttribute="bottom" constant="15" id="gkB-hN-PmP"/>
+                                    <constraint firstAttribute="width" constant="594" id="i8d-Er-Wgd"/>
                                     <constraint firstItem="w9P-Qz-HP4" firstAttribute="centerX" secondItem="LBg-Ur-Vrf" secondAttribute="centerX" id="ioc-53-gx8"/>
                                     <constraint firstItem="bTD-3X-cCQ" firstAttribute="top" secondItem="LBg-Ur-Vrf" secondAttribute="top" constant="44" id="k6B-Ny-xSs"/>
                                     <constraint firstItem="L68-IH-1wf" firstAttribute="trailing" secondItem="w9P-Qz-HP4" secondAttribute="trailing" constant="-10" id="k6p-Ht-3Fo"/>
@@ -157,9 +162,6 @@
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="70" estimatedRowHeight="1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="NEQ-0b-jCs">
                                                 <rect key="frame" x="0.0" y="63" width="424" height="699"/>
                                                 <color key="backgroundColor" red="0.19215685129999999" green="0.19215685129999999" blue="0.19215685129999999" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="NEQ-0b-jCs" secondAttribute="height" multiplier="424:699" id="ciu-AP-PaG"/>
-                                                </constraints>
                                                 <color key="sectionIndexColor" name="Text"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TitleArtistCell" rowHeight="80" id="ly3-EU-BXC" customClass="TitleArtistTableViewCell" customModule="HuskieRadio" customModuleProvider="target">
@@ -227,12 +229,16 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="MainBackground"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Gg2-vI-beE" secondAttribute="trailing" id="89I-qI-pqZ"/>
                             <constraint firstItem="NSA-F9-U5U" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="EBH-YC-iN1"/>
                             <constraint firstItem="NSA-F9-U5U" firstAttribute="leading" secondItem="LBg-Ur-Vrf" secondAttribute="trailing" id="JwB-rs-V4S"/>
                             <constraint firstItem="LBg-Ur-Vrf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Pke-VA-87d"/>
                             <constraint firstItem="LBg-Ur-Vrf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UNN-0q-OIZ"/>
                             <constraint firstItem="NSA-F9-U5U" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Wn1-Ir-QOV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LBg-Ur-Vrf" secondAttribute="bottom" id="anq-la-8Ji"/>
+                            <constraint firstItem="Gg2-vI-beE" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="grS-3G-EJ6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Gg2-vI-beE" secondAttribute="bottom" id="hCJ-2S-4M0"/>
+                            <constraint firstItem="Gg2-vI-beE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="oiP-my-H9H"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Uy1-u1-hUn"/>
