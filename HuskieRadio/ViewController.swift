@@ -196,7 +196,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         case 9:
             cell.numberLabel.text = "10"
         default:
-            cell.numberLabel.text =  "#"
+            cell.numberLabel.text = "#"
         }
         return cell
     }
