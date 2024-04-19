@@ -79,8 +79,33 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         recentsBG.layer.cornerRadius = 30
         recentsBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         
-        if UIDevice.modelName == "iPad (10th generation)" {
-            tabBarBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+        // Device Check
+        switch UIDevice.modelName {
+        case "iPad (10th generation)",
+            "iPad Air (3rd generation)",
+            "iPad Air (4th generation)",
+            "iPad Air (5th generation)",
+            "iPad mini (5th generation)",
+            "iPad mini (6th generation)",
+            "iPad Pro (11-inch) (1st generation)",
+            "iPad Pro (11-inch) (2nd generation)",
+            "iPad Pro (11-inch) (3rd generation)",
+            "iPad Pro (11-inch) (4th generation)":
+            
+            tabBarBG.layer.maskedCorners = [.layerMinXMinYCorner,
+                                            .layerMinXMaxYCorner,
+                                            .layerMaxXMinYCorner,
+                                            .layerMaxXMaxYCorner]
+            
+            recentsBG.layer.maskedCorners = [.layerMinXMinYCorner,
+                                             .layerMinXMaxYCorner,
+                                             .layerMaxXMinYCorner,
+                                             .layerMaxXMaxYCorner]
+            
+            
+            
+        default:
+            tabBarBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         }
         
         // Song Name
