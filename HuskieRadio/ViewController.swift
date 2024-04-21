@@ -21,10 +21,21 @@ class TitleArtistTableViewCell: UITableViewCell {
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var tabBarBG: UIView!
-    @IBOutlet weak var recentsBG: UIView!
+    @IBOutlet weak var playPauseButton: UIButton!
+    @IBOutlet weak var songArtImageView: UIImageView!
+
+    @IBOutlet weak var songTitle: UILabel!
     
+    @IBOutlet weak var tabBarBG: UIView!
+    
+    @IBOutlet weak var recentsHolder: UIView!
+    @IBOutlet weak var recentsBG: UIView!
+    @IBOutlet weak var recentsBGTop: NSLayoutConstraint!
+    @IBOutlet weak var recentsBGTrailing: NSLayoutConstraint!
+    
+    @IBOutlet weak var recentsLabelTop: NSLayoutConstraint!
     @IBOutlet weak var recentsTableView: UITableView!
+    
     
     let urlHQ = "https://cast3.asurahosting.com/proxy/johnhers/stream"
     let urlLQ = "https://cast3.asurahosting.com/proxy/johnhers/stream2"
@@ -39,19 +50,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var player: AVPlayer?
     
+    var rowHeight: CGFloat = 0
 //---------------------------------------------//
-        
-    //var songTitle = UILabel()
-    @IBOutlet weak var songTitle: UILabel!
     
-    //var playPauseButton = UIButton()
-    @IBOutlet weak var playPauseButton: UIButton!
-    
-    var playPauseBG = UIView()
-    var recentsButton = UIButton()
-    
-    //var songArtImageView = UIImageView()
-    @IBOutlet weak var songArtImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,15 +74,36 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         // TabBar
         tabBarBG.layer.cornerRadius = 30
-        tabBarBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         // Recently Played
         recentsBG.layer.cornerRadius = 30
-        recentsBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        
+        // Recently Played TableView
+        /*
+         Adjust top constraint based on the rowHeight times ten.
+         If difference between current & (calculated - 1) is bigger than 0, then subtract that from constraint.
+         */
+//        rowHeight = CGFloat(ceilf( Float(recentsTableView.layer.frame.height) / 10 ))
+//        let nHeight = rowHeight * 10 - 1
+//        let cHeight = recentsTableView.layer.frame.height
+//        let diff = nHeight - cHeight
+//
+//        if diff > 0 {
+//            let const = recentsLabelTop.constant - diff
+//            recentsLabelTop.constant = const
+//        }
+        
+        recentsTableView.layer.cornerRadius = 25
+        recentsTableView.layer.masksToBounds = true
+        
+        // Song Art ImageView
+        songArtImageView.layer.cornerRadius = 25
+        songArtImageView.layer.masksToBounds = true
+        
         
         // Device Check
         switch UIDevice.modelName {
-        case "iPad (10th generation)",
+        case "iPad (10th generation)", "Simulator iPad (10th generation)",
             "iPad Air (3rd generation)",
             "iPad Air (4th generation)",
             "iPad Air (5th generation)",
@@ -92,51 +114,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             "iPad Pro (11-inch) (3rd generation)",
             "iPad Pro (11-inch) (4th generation)":
             
-            tabBarBG.layer.maskedCorners = [.layerMinXMinYCorner,
-                                            .layerMinXMaxYCorner,
-                                            .layerMaxXMinYCorner,
-                                            .layerMaxXMaxYCorner]
+            tabBarBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner,
+                                            .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
             
-            recentsBG.layer.maskedCorners = [.layerMinXMinYCorner,
-                                             .layerMinXMaxYCorner,
-                                             .layerMaxXMinYCorner,
-                                             .layerMaxXMaxYCorner]
+            recentsBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner,
+                                             .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
             
-            
+            // Rounded Screen Spacing
+            recentsBGTop.constant = 22
+            recentsBGTrailing.constant = 21
+            recentsLabelTop.constant = 27
             
         default:
             tabBarBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            
+            recentsBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         }
         
-        // Song Name
-//        songTitle.frame = CGRect(x: 92, y: 636, width: 410, height: 29)
-//        songTitle.font = .boldSystemFont(ofSize: 24)
-//        view.addSubview(songTitle)
-       
-        // Song Art Image View
-//        songArtImageView.frame = CGRect(x: 82, y: 165, width: 430, height: 430)
-        songArtImageView.layer.cornerRadius = 25
-        songArtImageView.layer.masksToBounds = true
-//        view.addSubview(songArtImageView)
-        
-        // Play/Pause
-//        playPauseBG.frame = CGRect(x: 411, y: 495, width: 118, height: 115)
-//        playPauseBG.backgroundColor = UIColor(named: "HRWhite")
-//        playPauseBG.tintColor = .white
-//        playPauseBG.layer.cornerRadius = playPauseBG.layer.bounds.width / 2
-//        playPauseBG.layer.masksToBounds = true
-//        view.addSubview(playPauseBG)
-        
-//        playPauseButton = UIButton(frame: CGRect(x: 400, y: 485, width: 140, height: 135))
-        playPauseButton.addTarget(self, action: #selector(playPausePressed), for: .touchUpInside)
-//        playPauseButton.setBackgroundImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
-//        playPauseButton.tintColor = UIColor(named: "AccentColor")
-//        view.addSubview(playPauseButton)
-        
-        // Recently Played Table View
-        recentsTableView.layer.cornerRadius = 25
-        recentsTableView.layer.masksToBounds = true
     }
+    
     
 //---------------------------------------------//
 // MARK: - Audio
@@ -153,6 +149,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
+    @IBAction func playPausePressed(_ sender: UIButton) {
+        if playPauseButton.currentImage != UIImage(systemName: "play.circle.fill") {
+            // "Pause"
+            player?.volume = 0
+            // Play Icon
+            playPauseButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+            
+        } else {
+            // "Play"
+            player?.volume = 1
+            // Pause Icon
+            playPauseButton.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
+        }
+    }
     
     func controlCenterSetup() {
         UIApplication.shared.beginReceivingRemoteControlEvents()
@@ -162,7 +172,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         notifCenter.playCommand.addTarget { event1 in
             if self.player?.volume == 0 {
                 self.player?.volume = 1
-                return .success
+                return.success
             }
             return.commandFailed
         }
@@ -178,22 +188,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
 //---------------------------------------------//
 // MARK: - TableView
-    
-    // Touch Table to Search
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        // add Try Catch statement to handle "Index out of range"
-        
-        let webtitle = RecentsArray[indexPath.row].title
-        let webartist = RecentsArray[indexPath.row].artist
-        print("\(indexPath.row)")
-        
-        if let url = URL(string: "https://google.com/search?q=\(webtitle) - \(webartist)") {
-            let safariController = SFSafariViewController(url: url)
-            present(safariController, animated: true, completion: nil)
-        }
-        
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return RecentsArray.count
@@ -229,6 +223,31 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.numberLabel.text = "#"
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        rowHeight = CGFloat(ceilf( Float(recentsTableView.layer.frame.height) / 10 ))
+//        print(rowHeight)
+//        print(recentsLabelTop.constant)
+//        print(recentsTableView.layer.frame.height)
+        return rowHeight
+    }
+    
+    
+    // Touch Table to Search
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // add Try Catch statement to handle "Index out of range"
+        
+        let webtitle = RecentsArray[indexPath.row].title
+        let webartist = RecentsArray[indexPath.row].artist
+        print("\(indexPath.row)")
+        
+        if let url = URL(string: "https://google.com/search?q=\(webtitle) - \(webartist)") {
+            let safariController = SFSafariViewController(url: url)
+            present(safariController, animated: true, completion: nil)
+        }
+        
     }
     
 
@@ -346,31 +365,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
         }
     }
-    
 
-    //@objc func playPausePressed() {}
-    @IBAction func playPausePressed(_ sender: UIButton) {
-        if playPauseButton.currentImage != UIImage(systemName: "play.circle.fill") {
-            // "Pause"
-            player?.volume = 0
-            // Play Icon
-            playPauseButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
-            
-        } else {
-            // "Play"
-            player?.volume = 1
-            // Pause Icon
-            playPauseButton.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
-        }
-    }
     
 }
 
-
-//extension ViewController: UITableViewDataSource, UITableViewDelegate {
-//
-//
-//}
 
 
 //---------------------------------------------//
@@ -387,7 +385,7 @@ public extension UIDevice {
             return identifier + String(UnicodeScalar(UInt8(value)))
         }
 
-        func mapToDevice(identifier: String) -> String { // swiftlint:disable:this cyclomatic_complexity
+        func mapToDevice(identifier: String) -> String {
             #if os(iOS)
             switch identifier {
             case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":      return "iPad 2"
