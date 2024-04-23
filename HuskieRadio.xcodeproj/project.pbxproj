@@ -295,7 +295,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 37WVPM576U;
+				DEVELOPMENT_TEAM = G4SNGLLV4M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HuskieRadio/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
@@ -311,7 +311,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = org.d214.HuskieRadio;
+				PRODUCT_BUNDLE_IDENTIFIER = org.jhhs.HuskieRadio3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -328,7 +328,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 37WVPM576U;
+				DEVELOPMENT_TEAM = G4SNGLLV4M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HuskieRadio/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
@@ -344,7 +344,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = org.d214.HuskieRadio;
+				PRODUCT_BUNDLE_IDENTIFIER = org.jhhs.HuskieRadio3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
