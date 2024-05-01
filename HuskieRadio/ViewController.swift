@@ -135,6 +135,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
 //---------------------------------------------//
+// MARK: - Tab Bar
+    
+    @IBAction func ScheduleButtonPressed(_ sender: Any) {
+    }
+    
+    @IBAction func AboutButtonPressed(_ sender: Any) {
+        
+    }
+    
+    
+    
+//---------------------------------------------//
 // MARK: - Audio
     
     func audioPlayer() {
@@ -386,7 +398,6 @@ public extension UIDevice {
         }
 
         func mapToDevice(identifier: String) -> String {
-            #if os(iOS)
             switch identifier {
             case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":      return "iPad 2"
             case "iPad3,1", "iPad3,2", "iPad3,3":                 return "iPad (3rd generation)"
@@ -423,7 +434,6 @@ public extension UIDevice {
             case "i386", "x86_64", "arm64":                       return "Simulator \(mapToDevice(identifier: ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] ?? "iOS"))"
             default:                                              return identifier
             }
-            #endif
         }
 
         return mapToDevice(identifier: identifier)
