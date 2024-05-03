@@ -28,7 +28,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var tabBarBG: UIView!
     
-    @IBOutlet weak var recentsHolder: UIView!
     @IBOutlet weak var recentsBG: UIView!
     @IBOutlet weak var recentsBGTop: NSLayoutConstraint!
     @IBOutlet weak var recentsBGTrailing: NSLayoutConstraint!
