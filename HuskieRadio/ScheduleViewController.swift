@@ -9,16 +9,16 @@ import UIKit
 
 class ScheduleViewController: UIViewController {
 
-    @IBOutlet weak var genre1_indicator: UIButton!
+    @IBOutlet weak var genre1_indicator: UIView!
     @IBOutlet weak var genre1_timeLabel: UILabel!
     
-    @IBOutlet weak var genre2_indicator: UIButton!
+    @IBOutlet weak var genre2_indicator: UIView!
     @IBOutlet weak var genre2_timeLabel: UILabel!
     
-    @IBOutlet weak var genre3_indicator: UIButton!
+    @IBOutlet weak var genre3_indicator: UIView!
     @IBOutlet weak var genre3_timeLabel: UILabel!
     
-    @IBOutlet weak var genre4_indicator: UIButton!
+    @IBOutlet weak var genre4_indicator: UIView!
     @IBOutlet weak var genre4_timeLabel: UILabel!
     
     @IBOutlet weak var tabBarBG: UIView!
@@ -28,11 +28,13 @@ class ScheduleViewController: UIViewController {
     @IBOutlet weak var infoBGTrailing: NSLayoutConstraint!
 //---------------------------------------------//
 
+    override func viewWillAppear(_ animated: Bool) {
+        setup()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setup()
     }
     
 
@@ -49,10 +51,15 @@ class ScheduleViewController: UIViewController {
     
     func setup() {
         // Genre Indicators
-        genre1_indicator.tintColor = UIColor(named: "AccentName")
-        genre2_indicator.tintColor = UIColor(named: "CellBackground")
-        genre3_indicator.tintColor = UIColor(named: "CellBackground")
-        genre4_indicator.tintColor = UIColor(named: "CellBackground")
+        genre1_indicator.backgroundColor = UIColor(named: "CellBackground")
+        genre2_indicator.backgroundColor = UIColor(named: "CellBackground")
+        genre3_indicator.backgroundColor = UIColor(named: "CellBackground")
+        genre4_indicator.backgroundColor = UIColor(named: "CellBackground")
+        
+        genre1_indicator.layer.cornerRadius = 3
+        genre2_indicator.layer.cornerRadius = 3
+        genre3_indicator.layer.cornerRadius = 3
+        genre4_indicator.layer.cornerRadius = 3
         
         // TabBar
         tabBarBG.layer.cornerRadius = 30
@@ -90,6 +97,11 @@ class ScheduleViewController: UIViewController {
             
             infoBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         }
+        
+    }
+    
+    
+    func currentGenre() {
         
     }
 

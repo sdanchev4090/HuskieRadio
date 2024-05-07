@@ -311,17 +311,13 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="o8n-xN-bas" userLabel="1">
                                                         <rect key="frame" x="0.0" y="0.0" width="533" height="58"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vtM-gV-6Cu" userLabel="Indicator">
+                                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RL8-m0-J9s">
                                                                 <rect key="frame" x="0.0" y="0.0" width="5" height="58"/>
+                                                                <color key="backgroundColor" name="AccentColor"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="5" id="ZXb-xf-6Yc"/>
+                                                                    <constraint firstAttribute="width" constant="5" id="fFm-0t-RMP"/>
                                                                 </constraints>
-                                                                <color key="tintColor" name="AccentColor"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled">
-                                                                    <color key="baseBackgroundColor" name="AccentColor"/>
-                                                                </buttonConfiguration>
-                                                            </button>
+                                                            </view>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="M8C-OT-SoL">
                                                                 <rect key="frame" x="22" y="0.0" width="511" height="58"/>
                                                                 <subviews>
@@ -344,15 +340,13 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="dJD-tM-YGk" userLabel="2">
                                                         <rect key="frame" x="0.0" y="112" width="533" height="115"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ysi-hk-QNc" userLabel="Indicator">
+                                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XnV-QH-J6w">
                                                                 <rect key="frame" x="0.0" y="0.0" width="5" height="115"/>
+                                                                <color key="backgroundColor" name="CellBackground"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="5" id="7d1-D4-MoH"/>
+                                                                    <constraint firstAttribute="width" constant="5" id="eEQ-Uu-BF8"/>
                                                                 </constraints>
-                                                                <color key="tintColor" name="CellBackground"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled"/>
-                                                            </button>
+                                                            </view>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="HsV-fG-pzz">
                                                                 <rect key="frame" x="22" y="0.0" width="511" height="115"/>
                                                                 <subviews>
@@ -376,15 +370,13 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="43w-nC-pXZ" userLabel="3">
                                                         <rect key="frame" x="0.0" y="280.5" width="533" height="115"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cp7-RA-ls6" userLabel="Indicator">
+                                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YQo-IL-TdN">
                                                                 <rect key="frame" x="0.0" y="0.0" width="5" height="115"/>
+                                                                <color key="backgroundColor" name="CellBackground"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="5" id="xar-vQ-kxa"/>
+                                                                    <constraint firstAttribute="width" constant="5" id="PFg-q0-gFI"/>
                                                                 </constraints>
-                                                                <color key="tintColor" name="CellBackground"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled"/>
-                                                            </button>
+                                                            </view>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gts-yL-PV9">
                                                                 <rect key="frame" x="22" y="0.0" width="511" height="115"/>
                                                                 <subviews>
@@ -408,15 +400,13 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="1cK-0f-hjf" userLabel="4">
                                                         <rect key="frame" x="0.0" y="449.5" width="533" height="86.5"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNO-2K-0Br" userLabel="Indicator">
+                                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lq9-0f-nBy">
                                                                 <rect key="frame" x="0.0" y="0.0" width="5" height="86.5"/>
+                                                                <color key="backgroundColor" name="CellBackground"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="5" id="YSe-ub-YH1"/>
+                                                                    <constraint firstAttribute="width" constant="5" id="2mH-mh-rYc"/>
                                                                 </constraints>
-                                                                <color key="tintColor" name="CellBackground"/>
-                                                                <state key="normal" title="Button"/>
-                                                                <buttonConfiguration key="configuration" style="filled"/>
-                                                            </button>
+                                                            </view>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ftI-jN-RLh">
                                                                 <rect key="frame" x="22" y="0.0" width="511" height="86.5"/>
                                                                 <subviews>
@@ -591,13 +581,13 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="genre1_indicator" destination="vtM-gV-6Cu" id="sOW-05-Y9C"/>
+                        <outlet property="genre1_indicator" destination="RL8-m0-J9s" id="gok-en-OD2"/>
                         <outlet property="genre1_timeLabel" destination="CPu-dR-mUe" id="DRg-a7-E0R"/>
-                        <outlet property="genre2_indicator" destination="ysi-hk-QNc" id="Pq7-xP-lSu"/>
+                        <outlet property="genre2_indicator" destination="XnV-QH-J6w" id="uZx-zk-4GZ"/>
                         <outlet property="genre2_timeLabel" destination="VHY-TZ-6eA" id="EHo-Dn-lE8"/>
-                        <outlet property="genre3_indicator" destination="Cp7-RA-ls6" id="mUo-WK-ZLb"/>
+                        <outlet property="genre3_indicator" destination="YQo-IL-TdN" id="SX8-9e-O65"/>
                         <outlet property="genre3_timeLabel" destination="tUz-3k-sC1" id="sZy-Fl-91o"/>
-                        <outlet property="genre4_indicator" destination="XNO-2K-0Br" id="u0X-ra-wTG"/>
+                        <outlet property="genre4_indicator" destination="Lq9-0f-nBy" id="SkS-cb-Q1Q"/>
                         <outlet property="genre4_timeLabel" destination="tku-Ph-ghj" id="o1W-SS-RIo"/>
                         <outlet property="infoBG" destination="liR-gN-sXd" id="Z1s-oI-bVT"/>
                         <outlet property="infoBGTop" destination="SzC-i4-aH6" id="FEB-ro-gMI"/>
@@ -649,6 +639,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="DJ6-EQ-kVa"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" name="AccentColor"/>
     <resources>
         <image name="HR_bigLogo" width="3600" height="3600"/>
         <image name="Map" width="404" height="249"/>

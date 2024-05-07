@@ -52,13 +52,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var rowHeight: CGFloat = 0
 //---------------------------------------------//
     
+    override func viewWillAppear(_ animated: Bool) {
+        getData()
+        setup()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         audioPlayer()
-        setup()
-        getData()
         controlCenterSetup()
         
         recentsTableView.delegate = self
