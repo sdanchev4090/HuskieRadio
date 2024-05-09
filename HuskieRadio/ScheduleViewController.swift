@@ -33,6 +33,7 @@ class ScheduleViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         setup()
+        currentGenre()
     }
 
     override func viewDidLoad() {
@@ -85,7 +86,7 @@ class ScheduleViewController: UIViewController {
                                             .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
             
             infoBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner,
-                                             .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+                                          .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
             
             // Rounded Screen Spacing
             infoBGTop.constant = 22
@@ -97,6 +98,10 @@ class ScheduleViewController: UIViewController {
             infoBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         }
         
+    }
+    
+    
+    func currentGenre() {
         
         // Clock
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in
@@ -107,7 +112,7 @@ class ScheduleViewController: UIViewController {
             let current = formatter.string(from: time)
             self.clockLabel.text = current
             
-            // Genre
+            // Genres
             let hour = DateFormatter()
             hour.dateFormat = "hh a"
             
@@ -132,13 +137,7 @@ class ScheduleViewController: UIViewController {
                 self.genre1_indicator.backgroundColor = UIColor(named: "AccentColor")
                 self.currentGenreLabel.text = "Hits & Greats"
             }
-            
         }
-        
-    }
-    
-    
-    func currentGenre() {
         
     }
 
