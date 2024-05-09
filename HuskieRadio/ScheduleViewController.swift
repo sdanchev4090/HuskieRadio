@@ -23,6 +23,9 @@ class ScheduleViewController: UIViewController {
     
     @IBOutlet weak var tabBarBG: UIView!
     
+    @IBOutlet weak var clockLabel: UILabel!
+    @IBOutlet weak var currentGenreLabel: UILabel!
+    
     @IBOutlet weak var infoBG: UIView!
     @IBOutlet weak var infoBGTop: NSLayoutConstraint!
     @IBOutlet weak var infoBGTrailing: NSLayoutConstraint!
@@ -50,12 +53,8 @@ class ScheduleViewController: UIViewController {
     
     
     func setup() {
-        // Genre Indicators
-        genre1_indicator.backgroundColor = UIColor(named: "CellBackground")
-        genre2_indicator.backgroundColor = UIColor(named: "CellBackground")
-        genre3_indicator.backgroundColor = UIColor(named: "CellBackground")
-        genre4_indicator.backgroundColor = UIColor(named: "CellBackground")
         
+        // Genre Indicators
         genre1_indicator.layer.cornerRadius = 3
         genre2_indicator.layer.cornerRadius = 3
         genre3_indicator.layer.cornerRadius = 3
@@ -96,6 +95,44 @@ class ScheduleViewController: UIViewController {
             tabBarBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
             
             infoBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        }
+        
+        
+        // Clock
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {_ in
+            let time = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "hh:mm a"
+            
+            let current = formatter.string(from: time)
+            self.clockLabel.text = current
+            
+            // Genre
+            let hour = DateFormatter()
+            hour.dateFormat = "hh a"
+            
+            switch hour.string(from: time) {
+            case "12 AM":
+                self.genre2_timeLabel.textColor = UIColor(named: "AccentColor")
+                self.genre2_indicator.backgroundColor = UIColor(named: "AccentColor")
+                self.currentGenreLabel.text = "Midnight Blues"
+                
+            case "1 AM","2 AM":
+                self.genre3_timeLabel.textColor = UIColor(named: "AccentColor")
+                self.genre3_indicator.backgroundColor = UIColor(named: "AccentColor")
+                self.currentGenreLabel.text = "Overnight Jazz"
+            
+            case "3 AM","4 AM","5 AM":
+                self.genre4_timeLabel.textColor = UIColor(named: "AccentColor")
+                self.genre4_indicator.backgroundColor = UIColor(named: "AccentColor")
+                self.currentGenreLabel.text = "Classical Café"
+                
+            default:
+                self.genre1_timeLabel.textColor = UIColor(named: "AccentColor")
+                self.genre1_indicator.backgroundColor = UIColor(named: "AccentColor")
+                self.currentGenreLabel.text = "Hits & Greats"
+            }
+            
         }
         
     }

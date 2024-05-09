@@ -313,7 +313,7 @@
                                                         <subviews>
                                                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RL8-m0-J9s">
                                                                 <rect key="frame" x="0.0" y="0.0" width="5" height="58"/>
-                                                                <color key="backgroundColor" name="AccentColor"/>
+                                                                <color key="backgroundColor" name="CellBackground"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="5" id="fFm-0t-RMP"/>
                                                                 </constraints>
@@ -324,7 +324,7 @@
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6AM - 12AM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPu-dR-mUe">
                                                                         <rect key="frame" x="0.0" y="0.0" width="511" height="29"/>
                                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                                                        <color key="textColor" name="AccentColor"/>
+                                                                        <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Regular Rotation: Hits and Greats" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6t3-A8-vHF">
@@ -535,7 +535,7 @@
                                                                         <color key="textColor" name="Text"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hits &amp; Greats" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="86d-Qx-SXN" userLabel="Time">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hits &amp; Greats" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="86d-Qx-SXN" userLabel="Genre">
                                                                         <rect key="frame" x="0.0" y="29" width="369.5" height="75.5"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="63"/>
@@ -581,6 +581,8 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="clockLabel" destination="OmK-d5-9zY" id="MeS-sJ-Ifm"/>
+                        <outlet property="currentGenreLabel" destination="86d-Qx-SXN" id="elm-Wz-yAM"/>
                         <outlet property="genre1_indicator" destination="RL8-m0-J9s" id="gok-en-OD2"/>
                         <outlet property="genre1_timeLabel" destination="CPu-dR-mUe" id="DRg-a7-E0R"/>
                         <outlet property="genre2_indicator" destination="XnV-QH-J6w" id="uZx-zk-4GZ"/>
@@ -643,11 +645,11 @@
     <resources>
         <image name="HR_bigLogo" width="3600" height="3600"/>
         <image name="Map" width="404" height="249"/>
-        <image name="calendar" catalog="system" width="128" height="107"/>
-        <image name="info.circle" catalog="system" width="128" height="123"/>
-        <image name="pause.circle.fill" catalog="system" width="128" height="123"/>
-        <image name="radio" catalog="system" width="128" height="115"/>
-        <image name="radio.fill" catalog="system" width="128" height="115"/>
+        <image name="calendar" catalog="system" width="32" height="32"/>
+        <image name="info.circle" catalog="system" width="32" height="32"/>
+        <image name="pause.circle.fill" catalog="system" width="32" height="32"/>
+        <image name="radio" catalog="system" width="32" height="32"/>
+        <image name="radio.fill" catalog="system" width="32" height="32"/>
         <namedColor name="AccentColor">
             <color red="0.9882352941176471" green="0.40392156862745099" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
