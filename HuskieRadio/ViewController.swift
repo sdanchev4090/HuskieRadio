@@ -50,19 +50,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var player: AVPlayer?
     
     var rowHeight: CGFloat = 0
+    
+    var runViewFunc = true
 //---------------------------------------------//
     
     override func viewWillAppear(_ animated: Bool) {
-        getData()
         setup()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        audioPlayer()
-        controlCenterSetup()
-        
+
         recentsTableView.delegate = self
         recentsTableView.dataSource = self
     }
@@ -72,66 +70,72 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 // MARK: - UI Setup
     
     func setup() {
-        
-        // TabBar
-        tabBarBG.layer.cornerRadius = 30
-        
-        // Recently Played
-        recentsBG.layer.cornerRadius = 30
-        
-        // Recently Played TableView
-        /*
-         Adjust top constraint based on the rowHeight times ten.
-         If difference between current & (calculated - 1) is bigger than 0, then subtract that from constraint.
-         */
-//        rowHeight = CGFloat(ceilf( Float(recentsTableView.layer.frame.height) / 10 ))
-//        let nHeight = rowHeight * 10 - 1
-//        let cHeight = recentsTableView.layer.frame.height
-//        let diff = nHeight - cHeight
-//
-//        if diff > 0 {
-//            let const = recentsLabelTop.constant - diff
-//            recentsLabelTop.constant = const
-//        }
-        
-        recentsTableView.layer.cornerRadius = 25
-        recentsTableView.layer.masksToBounds = true
-        
-        // Song Art ImageView
-        songArtImageView.layer.cornerRadius = 25
-        songArtImageView.layer.masksToBounds = true
-        
-        
-        // Device Check
-        switch UIDevice.modelName {
-        case "iPad (10th generation)", "Simulator iPad (10th generation)",
-            "iPad Air (3rd generation)",
-            "iPad Air (4th generation)",
-            "iPad Air (5th generation)",
-            "iPad mini (5th generation)",
-            "iPad mini (6th generation)",
-            "iPad Pro (11-inch) (1st generation)",
-            "iPad Pro (11-inch) (2nd generation)",
-            "iPad Pro (11-inch) (3rd generation)",
-            "iPad Pro (11-inch) (4th generation)":
+        if runViewFunc == true {
+            runViewFunc = false
             
-            tabBarBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner,
-                                            .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+            getData()
+            audioPlayer()
+            controlCenterSetup()
             
-            recentsBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner,
-                                             .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+            // TabBar
+            tabBarBG.layer.cornerRadius = 30
             
-            // Rounded Screen Spacing
-            recentsBGTop.constant = 22
-            recentsBGTrailing.constant = 21
-            recentsLabelTop.constant = 27
+            // Recently Played
+            recentsBG.layer.cornerRadius = 30
             
-        default:
-            tabBarBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            // Recently Played TableView
+            /*
+             Adjust top constraint based on the rowHeight times ten.
+             If difference between current & (calculated - 1) is bigger than 0, then subtract that from constraint.
+             */
+    //        rowHeight = CGFloat(ceilf( Float(recentsTableView.layer.frame.height) / 10 ))
+    //        let nHeight = rowHeight * 10 - 1
+    //        let cHeight = recentsTableView.layer.frame.height
+    //        let diff = nHeight - cHeight
+    //
+    //        if diff > 0 {
+    //            let const = recentsLabelTop.constant - diff
+    //            recentsLabelTop.constant = const
+    //        }
             
-            recentsBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
-        }
-        
+            recentsTableView.layer.cornerRadius = 25
+            recentsTableView.layer.masksToBounds = true
+            
+            // Song Art ImageView
+            songArtImageView.layer.cornerRadius = 25
+            songArtImageView.layer.masksToBounds = true
+            
+            
+            // Device Check
+            switch UIDevice.modelName {
+            case "iPad (10th generation)", "Simulator iPad (10th generation)",
+                "iPad Air (3rd generation)",
+                "iPad Air (4th generation)",
+                "iPad Air (5th generation)",
+                "iPad mini (5th generation)",
+                "iPad mini (6th generation)",
+                "iPad Pro (11-inch) (1st generation)",
+                "iPad Pro (11-inch) (2nd generation)",
+                "iPad Pro (11-inch) (3rd generation)",
+                "iPad Pro (11-inch) (4th generation)":
+                
+                tabBarBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner,
+                                                .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+                
+                recentsBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner,
+                                                 .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+                
+                // Rounded Screen Spacing
+                recentsBGTop.constant = 22
+                recentsBGTrailing.constant = 21
+                recentsLabelTop.constant = 27
+                
+            default:
+                tabBarBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+                
+                recentsBG.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+            }
+        }        
     }
     
     
