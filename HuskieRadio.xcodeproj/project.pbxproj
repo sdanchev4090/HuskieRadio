@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E4AD36A2BFB105500EDEC41 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4AD3692BFB105500EDEC41 /* AboutViewController.swift */; };
 		8DF43BD9293FB0FA003787DA /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF43BD8293FB0FA003787DA /* Song.swift */; };
 		F6026C1C2B8F9B9A000D0459 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6026C1B2B8F9B9A000D0459 /* ScheduleViewController.swift */; };
 		F621AA3B290C75AA0073D6E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621AA3A290C75AA0073D6E7 /* AppDelegate.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E4AD3692BFB105500EDEC41 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		8DF43BD8293FB0FA003787DA /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		F6026C1B2B8F9B9A000D0459 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		F621AA37290C75AA0073D6E7 /* HuskieRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HuskieRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +67,7 @@
 				8DF43BD8293FB0FA003787DA /* Song.swift */,
 				F621AA3E290C75AA0073D6E7 /* ViewController.swift */,
 				F6026C1B2B8F9B9A000D0459 /* ScheduleViewController.swift */,
+				1E4AD3692BFB105500EDEC41 /* AboutViewController.swift */,
 				F621AA43290C75AB0073D6E7 /* Assets.xcassets */,
 				F621AA40290C75AA0073D6E7 /* Main.storyboard */,
 				F621AA45290C75AB0073D6E7 /* LaunchScreen.storyboard */,
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E4AD36A2BFB105500EDEC41 /* AboutViewController.swift in Sources */,
 				F6026C1C2B8F9B9A000D0459 /* ScheduleViewController.swift in Sources */,
 				8DF43BD9293FB0FA003787DA /* Song.swift in Sources */,
 				F621AA3F290C75AA0073D6E7 /* ViewController.swift in Sources */,
